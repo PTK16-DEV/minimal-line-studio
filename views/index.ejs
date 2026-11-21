@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minimal Line — 20 UI Animations & Signature Banner</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --border: #e5e5e5;
+      --card-bg: #fafafa;
+      --accent: #111111;
+      --accent-text: #ffffff;
+    }
+    [data-theme="cream"] {
+      --bg: #f6f4ef;
+      --text: #1a1917;
+      --muted: #6e6a63;
+      --border: #e2ddd3;
+      --card-bg: #efece4;
+    }
+    [data-theme="dark"] {
+      --bg: #111111;
+      --text: #f5f5f5;
+      --muted: #999999;
+      --border: #262626;
+      --card-bg: #181818;
+      --accent: #ffffff;
+      --accent-text: #111111;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+
+    /* Barre supérieure */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px; padding-bottom: 40px; border-bottom: 1px solid var(--border);
+    }
+    .brand { font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+    .controls { display: flex; align-items: center; gap: 8px; }
+    .theme-btn {
+      background: transparent; border: 1px solid var(--border); color: var(--text);
+      padding: 6px 14px; font-size: 12px; border-radius: 20px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .theme-btn.active { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+
+    /* Hero */
+    .hero { padding: 64px 0 48px; max-width: 680px; }
+    h1 { font-size: clamp(28px, 4vw, 44px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 16px; }
+    .subtitle { color: var(--muted); font-size: 16px; margin-bottom: 28px; }
+    .cta-btn {
+      display: inline-block; background: var(--accent); color: var(--accent-text);
+      padding: 14px 28px; text-decoration: none; font-size: 14px; font-weight: 500;
+      border-radius: 4px; letter-spacing: 0.02em; transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; }
+
+    /* Zone Signature Avion */
+    .signature-box {
+      border: 1px solid var(--border); background: var(--card-bg);
+      padding: 32px; border-radius: 8px; margin-bottom: 64px; overflow: hidden;
+    }
+    .signature-header {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px; margin-bottom: 24px;
+    }
+    .signature-title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .banner-input {
+      background: var(--bg); border: 1px solid var(--border); color: var(--text);
+      padding: 8px 14px; border-radius: 4px; font-size: 13px; width: 220px;
+    }
+    .sky-track {
+      position: relative; width: 100%; height: 140px; overflow: hidden;
+      display: flex; align-items: center; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border);
+    }
+    .plane-wrapper {
+      position: absolute; white-space: nowrap; display: flex; align-items: center;
+      animation: flyAcross 12s linear infinite;
+    }
+    @keyframes flyAcross {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(1100px); }
+    }
+
+    /* Grille des GIFs */
+    .grid-title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 24px; }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px; margin-bottom: 64px;
+    }
+    .card {
+      border: 1px solid var(--border); background: var(--card-bg); border-radius: 6px;
+      padding: 28px 16px 20px; display: flex; flex-direction: column; align-items: center;
+      justify-content: space-between; gap: 16px; transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-2px); }
+    .card img { width: 48px; height: 48px; object-fit: contain; }
+    .card-name { font-size: 12px; color: var(--muted); text-align: center; }
+
+    /* Inclus dans le pack */
+    .specs {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px; padding-top: 40px; border-top: 1px solid var(--border);
+    }
+    .spec-item h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .spec-item p { font-size: 13px; color: var(--muted); }
+  </style>
+</head>
+<body data-theme="light">
+
+  <div class="container">
+    <header>
+      <div class="brand">Minimal Line Studio</div>
+      <div class="controls">
+        <span style="font-size: 12px; color: var(--muted); margin-right: 4px;">Aperçu fond :</span>
+        <button class="theme-btn active" onclick="setTheme('light', this)">Blanc</button>
+        <button class="theme-btn" onclick="setTheme('cream', this)">Crème</button>
+        <button class="theme-btn" onclick="setTheme('dark', this)">Noir</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>20 animations minimalistes prêtes à glisser sur votre site.</h1>
+      <p class="subtitle">
+        Conçues pour les portfolios d'architectes, studios de design et boutiques élégantes.
+        Zéro code requis : fichiers GIF haute netteté en version Noire et Blanche sur fond transparent.
+      </p>
+      <!-- Remplace # par ton lien Gumroad ou Lemon Squeezy -->
+      <a href="#" class="cta-btn">Télécharger le pack complet (.ZIP) — 19 €</a>
+    </section>
+
+    <!-- Pièce signature interactive -->
+    <section class="signature-box">
+      <div class="signature-header">
+        <div class="signature-title">Pièce signature : Banderole Avion (GIF "Welcome" + HTML personnalisable inclus)</div>
+        <div>
+          <input type="text" class="banner-input" id="customText" value="WELCOME" maxlength="24" placeholder="Testez votre texte..." oninput="updateBanner(this.value)">
+        </div>
+      </div>
+      <div class="sky-track">
+        <div class="plane-wrapper">
+          <!-- Remplace ce bloc par ton SVG d'avion généré par Claude -->
+          <svg width="420" height="80" viewBox="0 0 420 80" fill="none" stroke="currentColor" stroke-width="1.2">
+            <!-- Banderole -->
+            <path d="M10,25 Q70,18 130,25 T250,25 L250,55 Q190,62 130,55 T10,55 Z" />
+            <text id="bannerLabel" x="130" y="44" text-anchor="middle" font-size="11" letter-spacing="4" fill="currentColor" stroke="none">WELCOME</text>
+            <!-- Câble -->
+            <line x1="250" y1="40" x2="295" y2="40" stroke-dasharray="3 2" />
+            <!-- Avion minimaliste -->
+            <path d="M295,40 L315,28 L322,36 L365,36 C375,36 382,40 382,42 C382,44 375,47 365,47 L310,47 Z" />
+            <line x1="345" y1="30" x2="355" y2="54" />
+            <line x1="385" y1="26" x2="385" y2="56" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grille des 20 GIFs -->
+    <section>
+      <div class="grid-title">Les 20 animations incluses (Noir & Blanc)</div>
+      <div class="grid" id="gifGrid"></div>
+    </section>
+
+    <section class="specs">
+      <div class="spec-item">
+        <h3>40 fichiers GIF transparents</h3>
+        <p>Chaque animation est livrée en noir pur (#111) et en blanc pur (#FFF) sans aucun halo pixellisé.</p>
+      </div>
+      <div class="spec-item">
+        <h3>100% Universel & Sans texte</h3>
+        <p>Des icônes compréhensibles dans toutes les langues, compatibles WordPress, Webflow, Wix, Shopify et Notion.</p>
+      </div>
+      <div class="spec-item">
+        <h3>Bonus personnalisable</h3>
+        <p>Modifiez le message de la banderole avion en 5 secondes grâce au fichier HTML prêt à l'emploi inclus.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const items = [
+      { file: "01-menu-3-traits.gif", name: "Menu 3 traits" },
+      { file: "02-menu-architecte.gif", name: "Menu 2 traits" },
+      { file: "03-menu-grille.gif", name: "Menu grille" },
+      { file: "04-fleche-suivant.gif", name: "Suivant" },
+      { file: "05-fleche-precedent.gif", name: "Précédent" },
+      { file: "06-retour-haut.gif", name: "Retour en haut" },
+      { file: "07-recherche.gif", name: "Recherche" },
+      { file: "08-partager.gif", name: "Partager" },
+      { file: "09-copier-lien.gif", name: "Copier le lien" },
+      { file: "10-exporter.gif", name: "Exporter" },
+      { file: "11-imprimer.gif", name: "Imprimer" },
+      { file: "12-contact.gif", name: "Contact" },
+      { file: "13-localisation.gif", name: "Localisation" },
+      { file: "14-validation.gif", name: "Validation" },
+      { file: "15-envoi-reussi.gif", name: "Envoi réussi" },
+      { file: "16-chargement.gif", name: "Chargement" },
+      { file: "17-favori.gif", name: "Favori" },
+      { file: "18-notification.gif", name: "Notification" },
+      { file: "19-scroll.gif", name: "Indicateur Scroll" },
+      { file: "20-avion-welcome.gif", name: "Avion Welcome" }
+    ];
+
+    let currentFolder = "gifs-noir";
+
+    function renderGrid() {
+      const grid = document.getElementById("gifGrid");
+      grid.innerHTML = items.map(item => `
+        <div class="card">
+          <img src="/${currentFolder}/${item.file}" alt="${item.name}" onerror="this.style.opacity='0.2'">
+          <span class="card-name">${item.name}</span>
+        </div>
+      `).join("");
+    }
+
+    function setTheme(theme, btn) {
+      document.body.setAttribute("data-theme", theme);
+      document.querySelectorAll(".theme-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentFolder = (theme === "dark") ? "gifs-blanc" : "gifs-noir";
+      renderGrid();
+    }
+
+    function updateBanner(val) {
