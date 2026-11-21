@@ -125,11 +125,19 @@ const DUREE_TRAVERSEE = 20;
     <path d="M358 510 L382 548 M370 520 L398 556" stroke-width="0.55" opacity="0.55" />
     <path d="M18 480 L45 480 M118 465 L142 465 M232 525 L258 525 M62 545 L95 545" stroke-width="0.55" opacity="0.5" />
 
-    <!-- Muret de soutènement en pierre -->
-    <path d="M135 352 L212 362 L212 374 L135 364 Z" fill="#e8e0d0" stroke-width="0.8" />
-    <line x1="154" y1="354" x2="154" y2="366" stroke-width="0.6" />
-    <line x1="173" y1="357" x2="173" y2="369" stroke-width="0.6" />
-    <line x1="192" y1="359" x2="192" y2="371" stroke-width="0.6" />
+    <!-- 6. Escalier en pierre réaliste avec muret et marches -->
+    <g stroke-width="0.8">
+      <!-- Structure pleine de l'escalier (marches en volume) -->
+      <path d="M138 358 L148 358 L148 364 L158 364 L158 370 L168 370 L168 376 L178 376 L178 382 L215 382 L215 392 L138 372 Z" fill="#eae2d3" />
+      <!-- Rampe / muret supérieur en pierre -->
+      <path d="M138 352 L148 352 L148 358 L158 358 L158 364 L168 364 L168 370 L178 370 L178 376 L215 376" fill="none" stroke-width="0.9" />
+      <!-- Petits traits verticaux des contremarches -->
+      <line x1="148" y1="358" x2="148" y2="364" stroke-width="0.6" />
+      <line x1="158" y1="364" x2="158" y2="370" stroke-width="0.6" />
+      <line x1="168" y1="370" x2="168" y2="376" stroke-width="0.6" />
+      <line x1="178" y1="376" x2="178" y2="382" stroke-width="0.6" />
+    </g>
+
 
     <!-- Vrais Pins Parasols & Cyprès -->
     <g stroke-width="0.85">
