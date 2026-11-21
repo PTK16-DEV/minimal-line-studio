@@ -16,18 +16,11 @@ const DUREE_TRAVERSEE = 20;
 <style>
   html, body { margin: 0; height: 100%; }
   body { background: linear-gradient(#f8f4ec, #eee6d6); color: #1d2433; overflow: hidden; }
-  .ciel { height: 50vh; display: flex; align-items: center; }
+  .ciel { height: 100vh; display: flex; align-items: center; }
   .vol { width: clamp(480px, 62vw, 960px); flex: none; animation: traversee 14s linear infinite; will-change: transform; }
   .vol svg { display: block; width: 150%; height: auto; overflow: visible; }
-    @keyframes traversee {
-    0%   { transform: translateX(18vw); opacity: 0; }
-    8%   { opacity: 1; }
-    92%  { opacity: 1; }
-    100% { transform: translateX(100vw); opacity: 0; }
-  }
-
-  /* Décor Village Méditerranéen & Falaise en bord de mer */
-  .paysage-fond {
+  @keyframes traversee { from { transform: translateX(-100%); } to { transform: translateX(100vw); } }
+  .decor-mer {
     position: fixed;
     inset: 0;
     width: 100%;
@@ -35,88 +28,92 @@ const DUREE_TRAVERSEE = 20;
     pointer-events: none;
     z-index: 0;
   }
-  .ciel { position: relative; z-index: 2; }
+  .ciel { position: relative; z-index: 5; }
   .nuage-lent { animation: deriveNuage 65s linear infinite; }
-  .nuage-moyen { animation: deriveNuage 45s linear infinite; }
   .vague-1 { animation: fluxVague 4.5s ease-in-out infinite; }
   .vague-2 { animation: fluxVague 6s ease-in-out infinite reverse; }
-  .mouette { animation: volMouette 7s ease-in-out infinite; }
-  @keyframes deriveNuage {
-    0% { transform: translateX(-80px); }
-    100% { transform: translateX(120px); }
+  @keyframes deriveNuage { 0% { transform: translateX(-60px); } 100% { transform: translateX(90px); } }
+  @keyframes fluxVague { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(14px); } }
+  @keyframes traversee {
+    0%   { transform: translateX(16vw); opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { transform: translateX(100vw); opacity: 0; }
   }
-  @keyframes fluxVague {
-    0%, 100% { transform: translateX(0) scaleY(1); }
-    50% { transform: translateX(14px) scaleY(1.04); }
-  }
-  @keyframes volMouette {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(18px, -8px); }
-  }
-  .falaise-avant {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 20; /* Passe devant l'avion */
-  }
-  .ciel {
-    position: relative;
-    z-index: 10; /* L'avion est entre la mer (0) et la falaise (20) */
-    height: 62vh; /* Hauteur idéale pour sortir juste derrière le village */
-    display: flex;
-    align-items: center;
-  }
-
 
 </style>
 </head>
 <body>
- <!-- Soleil discret & Nuages lents -->
+<svg class="decor-mer" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Soleil, Nuages & Mouettes -->
   <circle cx="1180" cy="140" r="38" stroke-width="0.7" opacity="0.35" />
-  <svg class="nuage-lent" opacity="0.45" stroke-width="0.8">
+  <g class="nuage-lent" opacity="0.45" stroke-width="0.8">
     <path d="M180 150 Q200 130 230 135 Q255 115 285 130 Q315 128 330 148 Z" />
     <path d="M820 110 Q845 92 875 98 Q900 82 925 98 Q950 96 965 112 Z" />
- </svg>
-  
-  <svg class="nuage-moyen" opacity="0.35" stroke-width="0.7">
-    <path d="M510 185 Q530 172 555 176 Q575 164 595 178 L505 185 Z" />
- </svg>
-
- <!-- Mouettes minimalistes -->
-  <svg class="mouette" stroke-width="0.9" opacity="0.6">
+  </g>
+  <g stroke-width="0.9" opacity="0.6">
     <path d="M420 230 Q428 222 435 229 Q442 222 450 230" />
     <path d="M465 210 Q471 204 476 209 Q481 204 487 210" />
-  </svg>
- <!-- Horizon marin -->
+  </g>
+
+  <!-- Horizon marin -->
   <line x1="0" y1="560" x2="1440" y2="560" stroke-width="0.9" opacity="0.6" />
 
-<!-- PLAGE EN CONTREBAS & RIVAGE -->
-  <svg stroke-width="0.95">
-    <!-- Courbe de la plage de sable -->
-    <path d="M445 560 Q620 578 880 585 Q1160 592 1440 582 L1440 800 L0 800 L0 595 L470 595 Z" fill="#f4ede0" stroke="none" />
-    <path d="M445 560 Q620 578 880 585 Q1160 592 1440 582" fill="none" />
-    <!-- Petits détails sur la plage (barque échouée & parasol minimaliste) -->
-    <path d="M640 572 Q658 580 676 572 Z" fill="#f8f4ec" stroke-width="0.85" />
-    <line x1="658" y1="572" x2="663" y2="558" stroke-width="0.75" />
-    <!-- Parasol minimaliste -->
-    <line x1="780" y1="576" x2="780" y2="554" stroke-width="0.8" />
-    <path d="M764 555 Q780 544 796 555 Z" fill="#f8f4ec" stroke-width="0.8" />
-  </svg>
-<!-- MER & VAGUES ANIMÉES -->
-  <svg stroke-width="0.8" opacity="0.75">
-    <!-- Écume du rivage -->
+  <!-- Falaise détaillée & Pins parasols -->
+  <g stroke-width="1.05">
+    <path d="M0 315 L98 315 L148 352 L215 362 L272 422 L332 448 L392 522 L448 560 L472 595 L0 595 Z" fill="#f2ece0" />
+    <path d="M98 315 L88 375 L112 435 L92 505 L125 595" fill="none" stroke-width="0.85" />
+    <path d="M215 362 L198 425 L224 495 L205 565" fill="none" stroke-width="0.85" />
+    <path d="M332 448 L315 505 L342 568" fill="none" stroke-width="0.8" />
+    <path d="M28 365 L52 395 L42 435 M135 390 L162 438 L148 485 L178 538 M252 455 L282 502 L268 548" stroke-width="0.6" opacity="0.6" />
+    <!-- Pins parasols & Cyprès -->
+    <path d="M315 446 Q319 430 313 413 M316 425 L326 417 M315 421 L305 415" fill="none" stroke-width="0.85" />
+    <path d="M288 414 Q285 404 299 401 Q309 394 323 399 Q339 398 345 408 Q348 415 336 416 Q315 415 288 414 Z" fill="#e6decb" stroke-width="0.85" />
+    <path d="M376 512 Q372 498 377 484 M375 494 L383 488 M376 491 L368 486" fill="none" stroke-width="0.85" />
+    <path d="M355 485 Q353 477 364 475 Q373 470 384 474 Q396 474 399 482 Q400 487 391 487 Q374 486 355 485 Z" fill="#e6decb" stroke-width="0.85" />
+    <path d="M18 315 L18 308 M18 310 Q13 309 14 290 Q16 268 18 260 Q20 268 22 290 Q23 309 18 310 Z" fill="#e6decb" stroke-width="0.8" />
+  </g>
+
+  <!-- Village Méditerranéen -->
+  <g stroke-width="0.95" fill="#f8f4ec">
+    <rect x="40" y="238" width="22" height="77" />
+    <polygon points="62,238 71,242 71,315 62,315" fill="#eae2d3" />
+    <polygon points="36,238 51,210 66,238" />
+    <polygon points="66,238 51,210 74,242" fill="#e2d9c8" />
+    <line x1="51" y1="200" x2="51" y2="210" stroke-width="0.8" />
+    <circle cx="51" cy="276" r="3.5" stroke-width="0.7" />
+    <rect x="74" y="268" width="36" height="47" />
+    <polygon points="110,268 122,273 122,315 110,315" fill="#eae2d3" />
+    <polygon points="70,268 92,250 114,268" />
+    <rect x="81" y="278" width="6" height="9" stroke-width="0.7" />
+    <rect x="96" y="278" width="6" height="9" stroke-width="0.7" />
+    <rect x="122" y="294" width="38" height="36" />
+    <polygon points="160,294 170,298 170,330 160,330" fill="#eae2d3" />
+    <rect x="130" y="304" width="6" height="9" stroke-width="0.7" />
+    <rect x="145" y="304" width="6" height="9" stroke-width="0.7" />
+    <rect x="96" y="324" width="44" height="34" />
+    <polygon points="92,324 118,309 144,324" />
+    <rect x="166" y="322" width="40" height="36" />
+    <polygon points="162,322 186,307 210,322" />
+    <rect x="215" y="376" width="38" height="34" />
+    <polygon points="211,376 234,361 257,376" />
+    <rect x="225" y="386" width="6" height="8" stroke-width="0.7" />
+  </g>
+
+  <!-- Plage, Barque, Parasol & Vagues -->
+  <path d="M448 560 Q620 578 880 585 Q1160 592 1440 582 L1440 800 L0 800 L0 595 L472 595 Z" fill="#f4ede0" stroke="none" />
+  <path d="M448 560 Q620 578 880 585 Q1160 592 1440 582" fill="none" stroke-width="0.95" />
+  <path d="M640 572 Q658 580 676 572 Z" fill="#f8f4ec" stroke-width="0.85" />
+  <line x1="780" y1="576" x2="780" y2="554" stroke-width="0.8" />
+  <path d="M764 555 Q780 544 796 555 Z" fill="#f8f4ec" stroke-width="0.8" />
+  <g stroke-width="0.8" opacity="0.75">
     <path class="vague-1" d="M465 572 Q640 590 900 596 Q1180 602 1440 593" />
     <path class="vague-2" d="M480 584 Q660 602 920 608 Q1200 614 1440 605" stroke-dasharray="18 8 4 8" />
-    <!-- Ondulations au large -->
     <path class="vague-1" d="M520 635 Q680 630 840 638 T1180 635 T1440 640" />
     <path class="vague-2" d="M420 675 Q600 682 790 674 T1140 680 T1440 674" stroke-dasharray="28 12" />
     <path class="vague-1" d="M300 720 Q520 714 740 722 T1120 718 T1440 724" />
-    <path class="vague-2" d="M180 762 Q440 768 700 760 T1100 766 T1440 760" stroke-dasharray="35 15" />
-  </svg>
-
-
+  </g>
+</svg>
 <div class="ciel">
   <div class="vol">
 <svg id="scene" viewBox="0 0 800 180" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Avion tirant une banderole">
@@ -142,7 +139,8 @@ const DUREE_TRAVERSEE = 20;
       <path d="M536 79.1 C524 70 510 60 498 56 L486 54.5 C485 62 486 74 488.3 85.2"/>
       <circle cx="703" cy="135" r="12"/>
     </g>
-  <!-- Structure, haubans, train (1.1) -->
+
+    <!-- Structure, haubans, train (1.1) -->
     <g stroke-width="1.1">
       <path d="M722 75.2 L718.5 57 M684 73.4 L677 56.7"/>
       <path d="M690 107 L701.5 133.5 M716 106 L704.5 133.5 M698 135 L708 135"/>
@@ -160,7 +158,8 @@ const DUREE_TRAVERSEE = 20;
       <!-- Écharpe -->
       <path d="M627 67.6 L622.9 68.4 L618.7 69.3 L614.6 69.6 L610.4 68.9 L606.3 67.4 L602.1 65.9 L598 65.6 L593.9 67.1 L589.7 69.9 L585.6 72.9 L581.4 74.4 L577.3 73.5 L573.1 70.4 L569 66.5 L569 68.4 L573.1 72.4 L577.3 75.7 L581.4 76.7 L585.6 75.3 L589.7 72.5 L593.9 69.8 L598 68.5 L602.1 68.9 L606.3 70.5 L610.4 72.1 L614.6 73 L618.7 72.9 L622.9 72.1 L627 71.4 Z"><animate attributeName="d" dur="3s" repeatCount="indefinite" calcMode="linear" values="M627 67.6 L622.9 68.4 L618.7 69.3 L614.6 69.6 L610.4 68.9 L606.3 67.4 L602.1 65.9 L598 65.6 L593.9 67.1 L589.7 69.9 L585.6 72.9 L581.4 74.4 L577.3 73.5 L573.1 70.4 L569 66.5 L569 68.4 L573.1 72.4 L577.3 75.7 L581.4 76.7 L585.6 75.3 L589.7 72.5 L593.9 69.8 L598 68.5 L602.1 68.9 L606.3 70.5 L610.4 72.1 L614.6 73 L618.7 72.9 L622.9 72.1 L627 71.4 Z;M627 67.4 L622.9 68.1 L618.7 69.2 L614.6 69.9 L610.4 69.6 L606.3 68.2 L602.1 66.5 L598 65.5 L593.9 66.1 L589.7 68.5 L585.6 71.7 L581.4 74.2 L577.3 74.6 L573.1 72.3 L569 68.4 L569 70.3 L573.1 74.3 L577.3 76.7 L581.4 76.5 L585.6 74.2 L589.7 71.1 L593.9 68.8 L598 68.3 L602.1 69.5 L606.3 71.3 L610.4 72.8 L614.6 73.2 L618.7 72.7 L622.9 71.8 L627 71.2 Z;M627 67.2 L622.9 67.8 L618.7 68.9 L614.6 69.9 L610.4 70.1 L606.3 69.1 L602.1 67.3 L598 65.7 L593.9 65.5 L589.7 67.1 L585.6 70.2 L581.4 73.4 L577.3 75 L573.1 73.9 L569 70.5 L569 72.4 L573.1 76 L577.3 77.2 L581.4 75.7 L585.6 72.7 L589.7 69.7 L593.9 68.2 L598 68.6 L602.1 70.3 L606.3 72.2 L610.4 73.3 L614.6 73.3 L618.7 72.4 L622.9 71.5 L627 71 Z;M627 67.1 L622.9 67.5 L618.7 68.5 L614.6 69.7 L610.4 70.4 L606.3 69.9 L602.1 68.3 L598 66.3 L593.9 65.3 L589.7 66 L585.6 68.7 L581.4 72.2 L577.3 74.8 L573.1 75.1 L569 72.5 L569 74.4 L573.1 77.1 L577.3 77 L581.4 74.5 L585.6 71.1 L589.7 68.6 L593.9 68 L598 69.2 L602.1 71.3 L606.3 73 L610.4 73.7 L614.6 73.1 L618.7 72 L622.9 71.1 L627 70.9 Z;M627 67 L622.9 67.2 L618.7 68 L614.6 69.3 L610.4 70.5 L606.3 70.6 L602.1 69.3 L598 67.3 L593.9 65.5 L589.7 65.3 L585.6 67.2 L581.4 70.6 L577.3 74 L573.1 75.6 L569 74.3 L569 76.2 L573.1 77.6 L577.3 76.2 L581.4 72.9 L585.6 69.6 L589.7 67.9 L593.9 68.2 L598 70.1 L602.1 72.3 L606.3 73.7 L610.4 73.7 L614.6 72.7 L618.7 71.5 L622.9 70.8 L627 70.8 Z;M627 67 L622.9 66.9 L618.7 67.5 L614.6 68.8 L610.4 70.3 L606.3 70.9 L602.1 70.3 L598 68.4 L593.9 66.2 L589.7 65 L585.6 66 L581.4 68.9 L577.3 72.6 L573.1 75.4 L569 75.5 L569 77.4 L573.1 77.4 L577.3 74.8 L581.4 71.2 L585.6 68.4 L589.7 67.6 L593.9 68.9 L598 71.2 L602.1 73.3 L606.3 74.1 L610.4 73.5 L614.6 72.2 L618.7 71.1 L622.9 70.6 L627 70.8 Z;M627 67.1 L622.9 66.8 L618.7 67.1 L614.6 68.2 L610.4 69.8 L606.3 71 L602.1 71 L598 69.5 L593.9 67.2 L589.7 65.3 L585.6 65.1 L581.4 67.3 L577.3 71 L573.1 74.5 L569 76.1 L569 78 L573.1 76.6 L577.3 73.1 L581.4 69.6 L585.6 67.6 L589.7 67.9 L593.9 69.9 L598 72.4 L602.1 74 L606.3 74.2 L610.4 73.1 L614.6 71.6 L618.7 70.6 L622.9 70.5 L627 70.9 Z;M627 67.2 L622.9 66.8 L618.7 66.8 L614.6 67.6 L610.4 69.2 L606.3 70.8 L602.1 71.5 L598 70.6 L593.9 68.4 L589.7 66 L585.6 64.8 L581.4 65.9 L577.3 69.1 L573.1 73.1 L569 76 L569 77.9 L573.1 75.2 L577.3 71.3 L581.4 68.2 L585.6 67.3 L589.7 68.6 L593.9 71.1 L598 73.5 L602.1 74.5 L606.3 73.9 L610.4 72.5 L614.6 71 L618.7 70.3 L622.9 70.5 L627 71 Z;M627 67.4 L622.9 66.9 L618.7 66.6 L614.6 67.1 L610.4 68.5 L606.3 70.3 L602.1 71.6 L598 71.5 L593.9 69.7 L589.7 67.1 L585.6 65.1 L581.4 65 L577.3 67.3 L573.1 71.3 L569 75.1 L569 77 L573.1 73.4 L577.3 69.5 L581.4 67.3 L585.6 67.5 L589.7 69.7 L593.9 72.4 L598 74.3 L602.1 74.6 L606.3 73.4 L610.4 71.7 L614.6 70.5 L618.7 70.1 L622.9 70.6 L627 71.2 Z;M627 67.6 L622.9 67.1 L618.7 66.6 L614.6 66.6 L610.4 67.7 L606.3 69.6 L602.1 71.4 L598 72 L593.9 70.9 L589.7 68.4 L585.6 65.8 L581.4 64.6 L577.3 65.9 L573.1 69.4 L569 73.6 L569 75.5 L573.1 71.4 L577.3 68 L581.4 66.9 L585.6 68.3 L589.7 71 L593.9 73.6 L598 74.9 L602.1 74.4 L606.3 72.7 L610.4 71 L614.6 70 L618.7 70.1 L622.9 70.8 L627 71.4 Z;M627 67.8 L622.9 67.4 L618.7 66.7 L614.6 66.4 L610.4 67 L606.3 68.7 L602.1 70.8 L598 72.2 L593.9 71.9 L589.7 69.9 L585.6 67 L581.4 64.8 L577.3 64.8 L573.1 67.5 L569 71.7 L569 73.6 L573.1 69.5 L577.3 67 L581.4 67.1 L585.6 69.4 L589.7 72.5 L593.9 74.6 L598 75 L602.1 73.8 L606.3 71.9 L610.4 70.3 L614.6 69.8 L618.7 70.3 L622.9 71.1 L627 71.6 Z;M627 68 L622.9 67.8 L618.7 67 L614.6 66.4 L610.4 66.5 L606.3 67.8 L602.1 70 L598 71.9 L593.9 72.5 L589.7 71.2 L585.6 68.5 L581.4 65.6 L577.3 64.4 L573.1 65.8 L569 69.6 L569 71.5 L573.1 67.9 L577.3 66.6 L581.4 67.9 L585.6 70.9 L589.7 73.8 L593.9 75.3 L598 74.8 L602.1 73 L606.3 71 L610.4 69.8 L614.6 69.8 L618.7 70.5 L622.9 71.4 L627 71.8 Z;M627 68.1 L622.9 68.1 L618.7 67.4 L614.6 66.5 L610.4 66.2 L606.3 67 L602.1 69 L598 71.3 L593.9 72.7 L589.7 72.3 L585.6 70 L581.4 66.9 L577.3 64.6 L573.1 64.7 L569 67.6 L569 69.5 L573.1 66.7 L577.3 66.8 L581.4 69.2 L585.6 72.5 L589.7 74.9 L593.9 75.5 L598 74.2 L602.1 72 L606.3 70.2 L610.4 69.5 L614.6 69.9 L618.7 71 L622.9 71.8 L627 71.9 Z;M627 68.2 L622.9 68.4 L618.7 67.9 L614.6 66.9 L610.4 66.1 L606.3 66.4 L602.1 68 L598 70.4 L593.9 72.5 L589.7 73.1 L585.6 71.5 L581.4 68.5 L577.3 65.4 L573.1 64.2 L569 65.8 L569 67.7 L573.1 66.2 L577.3 67.6 L581.4 70.8 L585.6 74 L589.7 75.6 L593.9 75.2 L598 73.2 L602.1 71 L606.3 69.5 L610.4 69.4 L614.6 70.3 L618.7 71.4 L622.9 72.1 L627 72 Z;M627 68.2 L622.9 68.6 L618.7 68.4 L614.6 67.4 L610.4 66.3 L606.3 66 L602.1 67 L598 69.3 L593.9 71.8 L589.7 73.3 L585.6 72.7 L581.4 70.2 L577.3 66.8 L573.1 64.4 L569 64.6 L569 66.5 L573.1 66.4 L577.3 68.9 L581.4 72.5 L585.6 75.2 L589.7 75.9 L593.9 74.5 L598 72.1 L602.1 70 L606.3 69.1 L610.4 69.6 L614.6 70.8 L618.7 71.9 L622.9 72.3 L627 72 Z;M627 68.1 L622.9 68.7 L618.7 68.8 L614.6 68 L610.4 66.8 L606.3 65.9 L602.1 66.3 L598 68.1 L593.9 70.8 L589.7 73.1 L585.6 73.6 L581.4 71.8 L577.3 68.4 L573.1 65.2 L569 64 L569 65.9 L573.1 67.2 L577.3 70.6 L581.4 74.1 L585.6 76 L589.7 75.6 L593.9 73.5 L598 71 L602.1 69.3 L606.3 69 L610.4 70 L614.6 71.4 L618.7 72.3 L622.9 72.4 L627 71.9 Z;M627 68 L622.9 68.8 L618.7 69.1 L614.6 68.6 L610.4 67.4 L606.3 66.1 L602.1 65.8 L598 67 L593.9 69.6 L589.7 72.4 L585.6 73.9 L581.4 73.1 L577.3 70.3 L573.1 66.6 L569 64.1 L569 66 L573.1 68.6 L577.3 72.5 L581.4 75.5 L585.6 76.3 L589.7 74.9 L593.9 72.3 L598 69.9 L602.1 68.8 L606.3 69.3 L610.4 70.7 L614.6 72 L618.7 72.7 L622.9 72.4 L627 71.8 Z;M627 67.8 L622.9 68.6 L618.7 69.3 L614.6 69.2 L610.4 68.1 L606.3 66.6 L602.1 65.7 L598 66.2 L593.9 68.3 L589.7 71.3 L585.6 73.6 L581.4 74.1 L577.3 72.1 L573.1 68.4 L569 65 L569 66.9 L573.1 70.4 L577.3 74.2 L581.4 76.4 L585.6 76.1 L589.7 73.8 L593.9 71 L598 69 L602.1 68.7 L606.3 69.8 L610.4 71.4 L614.6 72.6 L618.7 72.8 L622.9 72.3 L627 71.6 Z;M627 67.6 L622.9 68.4 L618.7 69.3 L614.6 69.6 L610.4 68.9 L606.3 67.4 L602.1 65.9 L598 65.6 L593.9 67.1 L589.7 69.9 L585.6 72.9 L581.4 74.4 L577.3 73.5 L573.1 70.4 L569 66.5 L569 68.4 L573.1 72.4 L577.3 75.7 L581.4 76.7 L585.6 75.3 L589.7 72.5 L593.9 69.8 L598 68.5 L602.1 68.9 L606.3 70.5 L610.4 72.1 L614.6 73 L618.7 72.9 L622.9 72.1 L627 71.4 Z;M627 67.4 L622.9 68.1 L618.7 69.2 L614.6 69.9 L610.4 69.6 L606.3 68.2 L602.1 66.5 L598 65.5 L593.9 66.1 L589.7 68.5 L585.6 71.7 L581.4 74.2 L577.3 74.6 L573.1 72.3 L569 68.4 L569 70.3 L573.1 74.3 L577.3 76.7 L581.4 76.5 L585.6 74.2 L589.7 71.1 L593.9 68.8 L598 68.3 L602.1 69.5 L606.3 71.3 L610.4 72.8 L614.6 73.2 L618.7 72.7 L622.9 71.8 L627 71.2 Z;M627 67.2 L622.9 67.8 L618.7 68.9 L614.6 69.9 L610.4 70.1 L606.3 69.1 L602.1 67.3 L598 65.7 L593.9 65.5 L589.7 67.1 L585.6 70.2 L581.4 73.4 L577.3 75 L573.1 73.9 L569 70.5 L569 72.4 L573.1 76 L577.3 77.2 L581.4 75.7 L585.6 72.7 L589.7 69.7 L593.9 68.2 L598 68.6 L602.1 70.3 L606.3 72.2 L610.4 73.3 L614.6 73.3 L618.7 72.4 L622.9 71.5 L627 71 Z;M627 67.1 L622.9 67.5 L618.7 68.5 L614.6 69.7 L610.4 70.4 L606.3 69.9 L602.1 68.3 L598 66.3 L593.9 65.3 L589.7 66 L585.6 68.7 L581.4 72.2 L577.3 74.8 L573.1 75.1 L569 72.5 L569 74.4 L573.1 77.1 L577.3 77 L581.4 74.5 L585.6 71.1 L589.7 68.6 L593.9 68 L598 69.2 L602.1 71.3 L606.3 73 L610.4 73.7 L614.6 73.1 L618.7 72 L622.9 71.1 L627 70.9 Z;M627 67 L622.9 67.2 L618.7 68 L614.6 69.3 L610.4 70.5 L606.3 70.6 L602.1 69.3 L598 67.3 L593.9 65.5 L589.7 65.3 L585.6 67.2 L581.4 70.6 L577.3 74 L573.1 75.6 L569 74.3 L569 76.2 L573.1 77.6 L577.3 76.2 L581.4 72.9 L585.6 69.6 L589.7 67.9 L593.9 68.2 L598 70.1 L602.1 72.3 L606.3 73.7 L610.4 73.7 L614.6 72.7 L618.7 71.5 L622.9 70.8 L627 70.8 Z;M627 67 L622.9 66.9 L618.7 67.5 L614.6 68.8 L610.4 70.3 L606.3 70.9 L602.1 70.3 L598 68.4 L593.9 66.2 L589.7 65 L585.6 66 L581.4 68.9 L577.3 72.6 L573.1 75.4 L569 75.5 L569 77.4 L573.1 77.4 L577.3 74.8 L581.4 71.2 L585.6 68.4 L589.7 67.6 L593.9 68.9 L598 71.2 L602.1 73.3 L606.3 74.1 L610.4 73.5 L614.6 72.2 L618.7 71.1 L622.9 70.6 L627 70.8 Z;M627 67.1 L622.9 66.8 L618.7 67.1 L614.6 68.2 L610.4 69.8 L606.3 71 L602.1 71 L598 69.5 L593.9 67.2 L589.7 65.3 L585.6 65.1 L581.4 67.3 L577.3 71 L573.1 74.5 L569 76.1 L569 78 L573.1 76.6 L577.3 73.1 L581.4 69.6 L585.6 67.6 L589.7 67.9 L593.9 69.9 L598 72.4 L602.1 74 L606.3 74.2 L610.4 73.1 L614.6 71.6 L618.7 70.6 L622.9 70.5 L627 70.9 Z;M627 67.2 L622.9 66.8 L618.7 66.8 L614.6 67.6 L610.4 69.2 L606.3 70.8 L602.1 71.5 L598 70.6 L593.9 68.4 L589.7 66 L585.6 64.8 L581.4 65.9 L577.3 69.1 L573.1 73.1 L569 76 L569 77.9 L573.1 75.2 L577.3 71.3 L581.4 68.2 L585.6 67.3 L589.7 68.6 L593.9 71.1 L598 73.5 L602.1 74.5 L606.3 73.9 L610.4 72.5 L614.6 71 L618.7 70.3 L622.9 70.5 L627 71 Z;M627 67.4 L622.9 66.9 L618.7 66.6 L614.6 67.1 L610.4 68.5 L606.3 70.3 L602.1 71.6 L598 71.5 L593.9 69.7 L589.7 67.1 L585.6 65.1 L581.4 65 L577.3 67.3 L573.1 71.3 L569 75.1 L569 77 L573.1 73.4 L577.3 69.5 L581.4 67.3 L585.6 67.5 L589.7 69.7 L593.9 72.4 L598 74.3 L602.1 74.6 L606.3 73.4 L610.4 71.7 L614.6 70.5 L618.7 70.1 L622.9 70.6 L627 71.2 Z;M627 67.6 L622.9 67.1 L618.7 66.6 L614.6 66.6 L610.4 67.7 L606.3 69.6 L602.1 71.4 L598 72 L593.9 70.9 L589.7 68.4 L585.6 65.8 L581.4 64.6 L577.3 65.9 L573.1 69.4 L569 73.6 L569 75.5 L573.1 71.4 L577.3 68 L581.4 66.9 L585.6 68.3 L589.7 71 L593.9 73.6 L598 74.9 L602.1 74.4 L606.3 72.7 L610.4 71 L614.6 70 L618.7 70.1 L622.9 70.8 L627 71.4 Z;M627 67.8 L622.9 67.4 L618.7 66.7 L614.6 66.4 L610.4 67 L606.3 68.7 L602.1 70.8 L598 72.2 L593.9 71.9 L589.7 69.9 L585.6 67 L581.4 64.8 L577.3 64.8 L573.1 67.5 L569 71.7 L569 73.6 L573.1 69.5 L577.3 67 L581.4 67.1 L585.6 69.4 L589.7 72.5 L593.9 74.6 L598 75 L602.1 73.8 L606.3 71.9 L610.4 70.3 L614.6 69.8 L618.7 70.3 L622.9 71.1 L627 71.6 Z;M627 68 L622.9 67.8 L618.7 67 L614.6 66.4 L610.4 66.5 L606.3 67.8 L602.1 70 L598 71.9 L593.9 72.5 L589.7 71.2 L585.6 68.5 L581.4 65.6 L577.3 64.4 L573.1 65.8 L569 69.6 L569 71.5 L573.1 67.9 L577.3 66.6 L581.4 67.9 L585.6 70.9 L589.7 73.8 L593.9 75.3 L598 74.8 L602.1 73 L606.3 71 L610.4 69.8 L614.6 69.8 L618.7 70.5 L622.9 71.4 L627 71.8 Z;M627 68.1 L622.9 68.1 L618.7 67.4 L614.6 66.5 L610.4 66.2 L606.3 67 L602.1 69 L598 71.3 L593.9 72.7 L589.7 72.3 L585.6 70 L581.4 66.9 L577.3 64.6 L573.1 64.7 L569 67.6 L569 69.5 L573.1 66.7 L577.3 66.8 L581.4 69.2 L585.6 72.5 L589.7 74.9 L593.9 75.5 L598 74.2 L602.1 72 L606.3 70.2 L610.4 69.5 L614.6 69.9 L618.7 71 L622.9 71.8 L627 71.9 Z;M627 68.2 L622.9 68.4 L618.7 67.9 L614.6 66.9 L610.4 66.1 L606.3 66.4 L602.1 68 L598 70.4 L593.9 72.5 L589.7 73.1 L585.6 71.5 L581.4 68.5 L577.3 65.4 L573.1 64.2 L569 65.8 L569 67.7 L573.1 66.2 L577.3 67.6 L581.4 70.8 L585.6 74 L589.7 75.6 L593.9 75.2 L598 73.2 L602.1 71 L606.3 69.5 L610.4 69.4 L614.6 70.3 L618.7 71.4 L622.9 72.1 L627 72 Z;M627 68.2 L622.9 68.6 L618.7 68.4 L614.6 67.4 L610.4 66.3 L606.3 66 L602.1 67 L598 69.3 L593.9 71.8 L589.7 73.3 L585.6 72.7 L581.4 70.2 L577.3 66.8 L573.1 64.4 L569 64.6 L569 66.5 L573.1 66.4 L577.3 68.9 L581.4 72.5 L585.6 75.2 L589.7 75.9 L593.9 74.5 L598 72.1 L602.1 70 L606.3 69.1 L610.4 69.6 L614.6 70.8 L618.7 71.9 L622.9 72.3 L627 72 Z;M627 68.1 L622.9 68.7 L618.7 68.8 L614.6 68 L610.4 66.8 L606.3 65.9 L602.1 66.3 L598 68.1 L593.9 70.8 L589.7 73.1 L585.6 73.6 L581.4 71.8 L577.3 68.4 L573.1 65.2 L569 64 L569 65.9 L573.1 67.2 L577.3 70.6 L581.4 74.1 L585.6 76 L589.7 75.6 L593.9 73.5 L598 71 L602.1 69.3 L606.3 69 L610.4 70 L614.6 71.4 L618.7 72.3 L622.9 72.4 L627 71.9 Z;M627 68 L622.9 68.8 L618.7 69.1 L614.6 68.6 L610.4 67.4 L606.3 66.1 L602.1 65.8 L598 67 L593.9 69.6 L589.7 72.4 L585.6 73.9 L581.4 73.1 L577.3 70.3 L573.1 66.6 L569 64.1 L569 66 L573.1 68.6 L577.3 72.5 L581.4 75.5 L585.6 76.3 L589.7 74.9 L593.9 72.3 L598 69.9 L602.1 68.8 L606.3 69.3 L610.4 70.7 L614.6 72 L618.7 72.7 L622.9 72.4 L627 71.8 Z;M627 67.8 L622.9 68.6 L618.7 69.3 L614.6 69.2 L610.4 68.1 L606.3 66.6 L602.1 65.7 L598 66.2 L593.9 68.3 L589.7 71.3 L585.6 73.6 L581.4 74.1 L577.3 72.1 L573.1 68.4 L569 65 L569 66.9 L573.1 70.4 L577.3 74.2 L581.4 76.4 L585.6 76.1 L589.7 73.8 L593.9 71 L598 69 L602.1 68.7 L606.3 69.8 L610.4 71.4 L614.6 72.6 L618.7 72.8 L622.9 72.3 L627 71.6 Z;M627 67.6 L622.9 68.4 L618.7 69.3 L614.6 69.6 L610.4 68.9 L606.3 67.4 L602.1 65.9 L598 65.6 L593.9 67.1 L589.7 69.9 L585.6 72.9 L581.4 74.4 L577.3 73.5 L573.1 70.4 L569 66.5 L569 68.4 L573.1 72.4 L577.3 75.7 L581.4 76.7 L585.6 75.3 L589.7 72.5 L593.9 69.8 L598 68.5 L602.1 68.9 L606.3 70.5 L610.4 72.1 L614.6 73 L618.7 72.9 L622.9 72.1 L627 71.4 Z"/></path>
     </g>
-  <!-- Détails fins (0.8) -->
+
+    <!-- Détails fins (0.8) -->
     <g stroke-width="0.8">
       <path d="M678 49.2 L678.5 56.8 M692 48.4 L692.5 57 M706 48.2 L706.5 57 M718 49.2 L718.5 56.7"/>
       <path d="M722 75.2 L684 73.4 M718.5 57 L677 56.7 M684 73.4 L718.5 57 M722 75.2 L677 56.7"/>
@@ -190,131 +189,8 @@ const DUREE_TRAVERSEE = 20;
   </g>
 </g>
 </svg>
- </div>
+  </div>
 </div>
-<!-- DÉCOR : VILLAGE SUR LA FALAISE, PLAGE & MER ANIMÉE -->
-<svg class="paysage-fond" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-
-  <!-- FALAISE ESCARPÉE DÉTAILLÉE (STYLE LIGNE CLAIRE JAPONAISE) -->
-  <svg stroke-width="1.05">
-    <!-- Masse rocheuse principale -->
-    <path d="M0 315 L98 315 L148 352 L215 362 L272 422 L332 448 L392 522 L448 560 L472 595 L0 595 Z" fill="#f2ece0" />
-    
-    <!-- Plans d'ombre et arêtes rocheuses -->
-    <path d="M98 315 L88 375 L112 435 L92 505 L125 595" fill="none" stroke-width="0.85" />
-    <path d="M215 362 L198 425 L224 495 L205 565" fill="none" stroke-width="0.85" />
-    <path d="M332 448 L315 505 L342 568" fill="none" stroke-width="0.8" />
-
-    <!-- Hachures et fissures minérales fines -->
-    <path d="M28 365 L52 395 L42 435 M36 382 L64 412" stroke-width="0.6" opacity="0.6" />
-    <path d="M135 390 L162 438 L148 485 L178 538" stroke-width="0.6" opacity="0.6" />
-    <path d="M252 455 L282 502 L268 548" stroke-width="0.6" opacity="0.6" />
-    <path d="M358 510 L382 548 M370 520 L398 556" stroke-width="0.55" opacity="0.55" />
-    <!-- Petits traits de relief horizontal -->
-    <path d="M18 480 L45 480 M118 465 L142 465 M232 525 L258 525 M62 545 L95 545" stroke-width="0.55" opacity="0.5" />
-
-    <!-- Muret de soutènement en pierre sous le village -->
-    <path d="M135 352 L212 362 L212 374 L135 364 Z" fill="#e8e0d0" stroke-width="0.8" />
-    <line x1="154" y1="354" x2="154" y2="366" stroke-width="0.6" />
-    <line x1="173" y1="357" x2="173" y2="369" stroke-width="0.6" />
-    <line x1="192" y1="359" x2="192" y2="371" stroke-width="0.6" />
-
-    <!-- Vrais Pins Parasols & Cyprès (emplacements dégagés) -->
-    <svg stroke-width="0.85">
-      <!-- Grand Pin sur le promontoire rocheux -->
-      <path d="M315 446 Q319 430 313 413 M316 425 L326 417 M315 421 L305 415" fill="none" />
-      <path d="M288 414 Q285 404 299 401 Q309 394 323 399 Q339 398 345 408 Q348 415 336 416 Q315 415 288 414 Z" fill="#e6decb" />
-      <path d="M295 412 Q315 410 338 413" stroke-width="0.6" opacity="0.6" />
-
-      <!-- Second Pin surplombant la crique -->
-      <path d="M376 512 Q372 498 377 484 M375 494 L383 488 M376 491 L368 486" fill="none" />
-      <path d="M355 485 Q353 477 364 475 Q373 470 384 474 Q396 474 399 482 Q400 487 391 487 Q374 486 355 485 Z" fill="#e6decb" />
-      <path d="M361 484 Q375 483 392 485" stroke-width="0.6" opacity="0.6" />
-
-      <!-- Cyprès effilés à gauche du village -->
-      <path d="M18 315 L18 308 M18 310 Q13 309 14 290 Q16 268 18 260 Q20 268 22 290 Q23 309 18 310 Z" fill="#e6decb" stroke-width="0.8" />
-      <path d="M29 315 L29 310 M29 311 Q25 310 26 296 Q27 280 29 274 Q31 280 32 296 Q33 310 29 311 Z" fill="#e6decb" stroke-width="0.75" />
-    </svg>
-  </svg>
-
-  <!-- VILLAGE MÉDITERRANÉEN ÉTAGÉ AVEC PERSPECTIVE & DÉTAILS -->
-  <svg stroke-width="0.95" fill="#f8f4ec">
-    
-    <!-- 1. Clocher / Campanile en haut -->
-    <rect x="40" y="238" width="22" height="77" />
-    <!-- Côté ombré du clocher -->
-    <polygon points="62,238 71,242 71,315 62,315" fill="#eae2d3" />
-    <!-- Toit pointu & cloche -->
-    <polygon points="36,238 51,210 66,238" />
-    <polygon points="66,238 51,210 74,242" fill="#e2d9c8" />
-    <line x1="51" y1="200" x2="51" y2="210" stroke-width="0.8" />
-    <line x1="48" y1="203" x2="54" y2="203" stroke-width="0.8" />
-    <!-- Ouverture arche avec petite cloche -->
-    <path d="M46 262 L46 250 A5 5 0 0 1 56 250 L56 262 Z" fill="#1d2433" stroke="none" opacity="0.15" />
-    <path d="M46 262 L46 250 A5 5 0 0 1 56 250 L56 262 Z" fill="none" stroke-width="0.75" />
-    <circle cx="51" cy="254" r="2.5" stroke-width="0.7" />
-    <circle cx="51" cy="276" r="3.5" stroke-width="0.7" />
-
-    <!-- 2. Maison haute avec cheminée et toit à deux pans -->
-    <rect x="74" y="268" width="36" height="47" />
-    <polygon points="110,268 122,273 122,315 110,315" fill="#eae2d3" />
-    <polygon points="70,268 92,250 114,268" />
-    <polygon points="114,268 92,250 125,273" fill="#e2d9c8" />
-    <!-- Cheminée -->
-    <rect x="100" y="246" width="5" height="12" />
-    <line x1="98" y1="246" x2="107" y2="246" stroke-width="1.1" />
-    <!-- Fenêtres avec volets et balcon -->
-    <rect x="81" y="278" width="6" height="9" stroke-width="0.7" />
-    <line x1="79" y1="278" x2="79" y2="287" stroke-width="0.6" />
-    <rect x="96" y="278" width="6" height="9" stroke-width="0.7" />
-    <line x1="104" y1="278" x2="104" y2="287" stroke-width="0.6" />
-    <!-- Petit balcon fer forgé -->
-    <line x1="78" y1="298" x2="105" y2="298" stroke-width="0.8" />
-    <line x1="80" y1="294" x2="103" y2="294" stroke-width="0.6" />
-    <line x1="82" y1="294" x2="82" y2="298" stroke-width="0.5" />
-    <line x1="91" y1="294" x2="91" y2="298" stroke-width="0.5" />
-    <line x1="101" y1="294" x2="101" y2="298" stroke-width="0.5" />
-
-    <!-- 3. Maison terrasse toit plat (style méditerranéen) -->
-    <rect x="122" y="294" width="38" height="36" />
-    <polygon points="160,294 170,298 170,330 160,330" fill="#eae2d3" />
-    <!-- Corniche de toit terrasse -->
-    <line x1="120" y1="294" x2="162" y2="294" stroke-width="1.3" />
-    <line x1="122" y1="290" x2="160" y2="290" stroke-width="0.7" />
-    <rect x="130" y="304" width="6" height="9" stroke-width="0.7" />
-    <rect x="145" y="304" width="6" height="9" stroke-width="0.7" />
-
-    <!-- 4. Maison intermédiaire en avancée -->
-    <rect x="96" y="324" width="44" height="34" />
-    <polygon points="92,324 118,309 144,324" />
-    <rect x="105" y="333" width="6" height="8" stroke-width="0.7" />
-    <rect x="122" y="333" width="6" height="8" stroke-width="0.7" />
-    <!-- Porte voûtée -->
-    <path d="M113 358 L113 347 A4 4 0 0 1 121 347 L121 358 Z" stroke-width="0.7" />
-
-    <!-- 5. Maison à droite sur le replat -->
-    <rect x="166" y="322" width="40" height="36" />
-    <polygon points="206,322 216,327 216,360 206,360" fill="#eae2d3" />
-    <polygon points="162,322 186,307 210,322" />
-    <polygon points="210,322 186,307 219,327" fill="#e2d9c8" />
-    <rect x="175" y="332" width="6" height="9" stroke-width="0.7" />
-    <rect x="191" y="332" width="6" height="9" stroke-width="0.7" />
-
-    <!-- 6. Escalier en pierre descendant la falaise -->
-    <path d="M140 358 L152 358 L152 366 L164 366 L164 374 L176 374 L176 382 L195 382" fill="none" stroke-width="0.85" />
-    <path d="M140 353 L152 353 L152 361 L164 361 L164 369 L176 369 L176 377 L195 377" fill="none" stroke-width="0.6" opacity="0.7" />
-
-    <!-- 7. Maison basse accrochée au promontoire -->
-    <rect x="215" y="376" width="38" height="34" />
-    <polygon points="253,376 263,381 263,413 253,413" fill="#eae2d3" />
-    <polygon points="211,376 234,361 257,376" />
-    <polygon points="257,376 234,361 266,381" fill="#e2d9c8" />
-    <!-- Cheminée & fenêtre -->
-    <rect x="220" y="358" width="4" height="10" />
-    <rect x="225" y="386" width="6" height="8" stroke-width="0.7" />
-    <rect x="239" y="386" width="6" height="8" stroke-width="0.7" />
-  </svg>
-   
 <script>
 var TAU = Math.PI * 2;
 var PLANE_C = { x: 630, y: 90 };
@@ -341,7 +217,7 @@ function banniereFrame(theta, texte) {
     var yb = toWorld(HOOK, planeState(phi)).y + 4 * Math.min(1, u * 5);
     var amp = 1.2 + 10 * u;
     var w = amp * Math.sin(TAU * 1.35 * u - theta) + 0.35 * amp * Math.sin(TAU * 2.7 * u - 2 * theta);
-  pts.push({ x: xf - L * u, y: yb + w });
+    pts.push({ x: xf - L * u, y: yb + w });
   }
   for (i = 0; i <= N; i++) {
     var a = pts[Math.max(0, i - 1)], b = pts[Math.min(N, i + 1)];
@@ -371,8 +247,8 @@ function banniereFrame(theta, texte) {
     var uu = 0.5 + span / (2 * L) - k * step / L;
     var idx = Math.min(N - 1e-6, Math.max(0, uu * N)), i0 = Math.floor(idx), fr = idx - i0;
     var p0 = pts[i0], p1 = pts[i0 + 1], t0 = tan[i0], t1 = tan[i0 + 1];
-   var x = p0.x + (p1.x - p0.x) * fr, y = p0.y + (p1.y - p0.y) * fr;
-var tx2 = t0.x + (t1.x - t0.x) * fr, ty2 = t0.y + (t1.y - t0.y) * fr;
+    var x = p0.x + (p1.x - p0.x) * fr, y = p0.y + (p1.y - p0.y) * fr;
+    var tx2 = t0.x + (t1.x - t0.x) * fr, ty2 = t0.y + (t1.y - t0.y) * fr;
     letters.push({ ch: ch, x: f1(x), y: f1(y), rot: f2(Math.atan2(-ty2, -tx2) * 180 / Math.PI) });
   });
   return { outline: outline, innerT: poly(inT, 1, 35), innerB: poly(inB, 1, 35), cable: cable, letters: letters, fs: Math.round(fs * 10) / 10 };
@@ -401,7 +277,7 @@ function scarfFrame(theta) {
     var t = document.createElementNS(NS, 'text');
     t.setAttribute('text-anchor', 'middle'); t.setAttribute('dy', '.35em'); t.setAttribute('font-size', f0.fs);
     t.textContent = c; gLet.appendChild(t); return t;
-   });
+  });
   function maj() {
     var th = TAU * ((svg.getCurrentTime() % 3) / 3), fr = banniereFrame(th, TEXTE_BANNIERE);
     banPath.setAttribute('d', fr.outline); banInT.setAttribute('d', fr.innerT);
