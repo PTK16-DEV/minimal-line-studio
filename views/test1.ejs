@@ -74,6 +74,31 @@ const DUREE_TRAVERSEE = 20;
   <!-- Horizon marin -->
   <line x1="0" y1="560" x2="1440" y2="560" stroke-width="0.9" opacity="0.6" />
 
+<!-- FALAISE ESCARPÉE À GAUCHE -->
+  <g stroke-width="1.1">
+    <!-- Contour rocheux principal -->
+    <path d="M0 320 L95 320 L145 355 L210 365 L265 425 L320 445 L385 520 L445 560 L470 595 L0 595 Z" fill="#f3ede2" />
+    <!-- Strates et failles de la falaise (style dessin animé japonais) -->
+    <path d="M60 360 L110 410 L95 465 L140 520" stroke-width="0.7" opacity="0.65" />
+    <path d="M165 385 L195 445 L180 495 L235 555" stroke-width="0.7" opacity="0.65" />
+    <path d="M250 435 L290 490 L275 540" stroke-width="0.65" opacity="0.55" />
+    <path d="M35 450 L75 495 L60 555" stroke-width="0.65" opacity="0.55" />
+    <!-- Végétation / Pins parasols stylisés -->
+    <path d="M125 342 Q145 325 168 342 Z" fill="#eee6d6" stroke-width="0.85" />
+    <line x1="146" y1="342" x2="146" y2="355" stroke-width="0.85" />
+    <path d="M225 398 Q242 384 260 398 Z" fill="#eee6d6" stroke-width="0.8" />
+    <line x1="242" y1="398" x2="242" y2="412" stroke-width="0.8" />
+  </g>
+
+  <!-- VILLAGE ACCROCHÉ À LA FALAISE -->
+  <g stroke-width="0.95" fill="#f8f4ec">
+    <!-- Clocher / Tour en haut du village -->
+    <rect x="42" y="245" width="24" height="75" />
+    <polygon points="38,245 54,218 70,245" />
+    <line x1="54" y1="208" x2="54" y2="218" stroke-width="0.8" />
+    <circle cx="54" cy="262" r="4" stroke-width="0.7" />
+    <path d="M50 295 L50 282 A4 4 0 0 1 58 282 L58 295 Z" stroke-width="0.7" />
+
   <div class="vol">
 <svg id="scene" viewBox="0 0 800 180" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Avion tirant une banderole">
 
@@ -152,30 +177,7 @@ const DUREE_TRAVERSEE = 20;
 
  
 
-  <!-- FALAISE ESCARPÉE À GAUCHE -->
-  <g stroke-width="1.1">
-    <!-- Contour rocheux principal -->
-    <path d="M0 320 L95 320 L145 355 L210 365 L265 425 L320 445 L385 520 L445 560 L470 595 L0 595 Z" fill="#f3ede2" />
-    <!-- Strates et failles de la falaise (style dessin animé japonais) -->
-    <path d="M60 360 L110 410 L95 465 L140 520" stroke-width="0.7" opacity="0.65" />
-    <path d="M165 385 L195 445 L180 495 L235 555" stroke-width="0.7" opacity="0.65" />
-    <path d="M250 435 L290 490 L275 540" stroke-width="0.65" opacity="0.55" />
-    <path d="M35 450 L75 495 L60 555" stroke-width="0.65" opacity="0.55" />
-    <!-- Végétation / Pins parasols stylisés -->
-    <path d="M125 342 Q145 325 168 342 Z" fill="#eee6d6" stroke-width="0.85" />
-    <line x1="146" y1="342" x2="146" y2="355" stroke-width="0.85" />
-    <path d="M225 398 Q242 384 260 398 Z" fill="#eee6d6" stroke-width="0.8" />
-    <line x1="242" y1="398" x2="242" y2="412" stroke-width="0.8" />
-  </g>
-
-  <!-- VILLAGE ACCROCHÉ À LA FALAISE -->
-  <g stroke-width="0.95" fill="#f8f4ec">
-    <!-- Clocher / Tour en haut du village -->
-    <rect x="42" y="245" width="24" height="75" />
-    <polygon points="38,245 54,218 70,245" />
-    <line x1="54" y1="208" x2="54" y2="218" stroke-width="0.8" />
-    <circle cx="54" cy="262" r="4" stroke-width="0.7" />
-    <path d="M50 295 L50 282 A4 4 0 0 1 58 282 L58 295 Z" stroke-width="0.7" />
+  
 
     <!-- Maisons étagées niveau 1 (haut) -->
     <rect x="72" y="275" width="38" height="45" />
