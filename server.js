@@ -13,8 +13,8 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 // Route pour ta page de test
-app.get('/test', (req, res) => {
-  res.render('test');
+app.get('/test1', (req, res) => {
+  res.render('test1');
 });
 
 
