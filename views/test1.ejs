@@ -19,7 +19,13 @@ const DUREE_TRAVERSEE = 20;
   .ciel { height: 50vh; display: flex; align-items: center; }
   .vol { width: clamp(480px, 62vw, 960px); flex: none; animation: traversee 14s linear infinite; will-change: transform; }
   .vol svg { display: block; width: 150%; height: auto; overflow: visible; }
-  @keyframes traversee { from { transform: translateX(-100%); } to { transform: translateX(100vw); } }
+    @keyframes traversee {
+    0%   { transform: translateX(18vw); opacity: 0; }
+    8%   { opacity: 1; }
+    92%  { opacity: 1; }
+    100% { transform: translateX(100vw); opacity: 0; }
+  }
+
   /* Décor Village Méditerranéen & Falaise en bord de mer */
   .paysage-fond {
     position: fixed;
