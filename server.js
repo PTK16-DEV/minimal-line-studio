@@ -12,6 +12,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.render('index');
 });
+// Route pour ta page de test
+app.get('/test', (req, res) => {
+  res.render('test');
+});
+
 
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);
