@@ -18,7 +18,7 @@ const DUREE_TRAVERSEE = 18;
   body { background: linear-gradient(#f8f4ec, #eee6d6); color: #1d2433; overflow: hidden; }
   .ciel { height: 100vh; display: flex; align-items: center; }
   .vol { width: clamp(480px, 62vw, 960px); flex: none; animation: traversee 14s linear infinite; will-change: transform; }
-  .vol svg { display: block; width: 150%; height: auto; overflow: visible; }
+  .vol svg { display: block; width: 120%; height: auto; overflow: visible; }
   @keyframes traversee { from { transform: translateX(-100%); } to { transform: translateX(100vw); } }
   .decor-mer {
     position: fixed;
@@ -110,15 +110,49 @@ const DUREE_TRAVERSEE = 18;
 <body>
 <svg class="decor-mer" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
   
-  <!-- Soleil & Nuages lents -->
-  <circle cx="1180" cy="140" r="38" stroke-width="0.7" opacity="0.35" />
-  <g class="nuage-lent" opacity="0.45" stroke-width="0.8">
-    <path d="M180 150 Q200 130 230 135 Q255 115 285 130 Q315 128 330 148 Z" />
-    <path d="M820 110 Q845 92 875 98 Q900 82 925 98 Q950 96 965 112 Z" />
+    <!-- SOLEIL POÉTIQUE & CUMULUS DÉTAILLÉS (STYLE ANIME JAPONAIS) -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Soleil doux avec double halo et rayons minimalistes -->
+    <g transform="translate(1210, 125)">
+      <circle cx="0" cy="0" r="32" fill="#fbf8f1" stroke-width="0.9" opacity="0.7" />
+      <circle cx="0" cy="0" r="42" fill="none" stroke-width="0.5" stroke-dasharray="3 5" opacity="0.45" />
+      <!-- Rayons fins asymétriques -->
+      <line x1="-54" y1="0" x2="-46" y2="0" stroke-width="0.6" opacity="0.4" />
+      <line x1="46" y1="0" x2="54" y2="0" stroke-width="0.6" opacity="0.4" />
+      <line x1="0" y1="-54" x2="0" y2="-46" stroke-width="0.6" opacity="0.4" />
+      <line x1="0" y1="46" x2="0" y2="54" stroke-width="0.6" opacity="0.4" />
+      <line x1="-38" y1="-38" x2="-33" y2="-33" stroke-width="0.5" opacity="0.35" />
+      <line x1="33" y1="33" x2="38" y2="38" stroke-width="0.5" opacity="0.35" />
+      <line x1="33" y1="-33" x2="38" y2="-38" stroke-width="0.5" opacity="0.35" />
+      <line x1="-38" y1="38" x2="-33" y2="33" stroke-width="0.5" opacity="0.35" />
+    </g>
+
+    <!-- Grand Cumulus de gauche (sculpté avec volutes intérieures) -->
+    <g class="nuage-lent" opacity="0.65">
+      <!-- Silhouette principale -->
+      <path d="M130 148 Q125 134 142 130 Q152 108 182 112 Q204 92 236 104 Q262 98 278 118 Q298 122 296 142 Q294 150 280 150 L142 150 Q132 150 130 148 Z" fill="#fbf9f4" stroke-width="0.85" />
+      <!-- Volutes internes et lignes d'ombre sous le nuage -->
+      <path d="M168 126 Q184 116 202 124" fill="none" stroke-width="0.6" opacity="0.65" />
+      <path d="M214 118 Q232 110 248 122" fill="none" stroke-width="0.6" opacity="0.65" />
+      <path d="M148 144 Q210 146 278 143" fill="none" stroke-width="0.55" opacity="0.5" />
+    </g>
+
+    <!-- Cumulus lointain à droite (près du soleil) -->
+    <g class="nuage-lent" opacity="0.55">
+      <path d="M840 108 Q838 97 852 94 Q864 76 890 82 Q912 68 938 80 Q958 78 968 95 Q982 99 978 110 L848 110 Z" fill="#fbf9f4" stroke-width="0.8" />
+      <path d="M876 92 Q892 84 908 92" fill="none" stroke-width="0.55" opacity="0.6" />
+      <path d="M856 105 Q915 107 966 104" fill="none" stroke-width="0.5" opacity="0.45" />
+    </g>
+
+    <!-- Petit nuage étiré / cirrus léger au centre -->
+    <g class="nuage-moyen" opacity="0.45">
+      <path d="M480 168 Q505 156 532 162 Q552 150 576 160 Q598 158 612 168 L475 168 Z" fill="#fbf9f4" stroke-width="0.7" />
+      <path d="M518 164 Q545 165 588 164" fill="none" stroke-width="0.5" opacity="0.5" />
+    </g>
+
   </g>
-  <g class="nuage-moyen" opacity="0.35" stroke-width="0.7">
-    <path d="M510 185 Q530 172 555 176 Q575 164 595 178 L505 185 Z" />
-  </g>
+
 
    <!-- Mouettes animées en altitude -->
   <g class="mouette" stroke-width="0.9" opacity="0.65">
