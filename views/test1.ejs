@@ -79,6 +79,14 @@ const DUREE_TRAVERSEE = 20;
     94%  { opacity: 1; }
     100% { transform: translateX(100vw); opacity: 0; }
   }
+  .voilier {
+    animation: tangageVoilier 5.5s ease-in-out infinite;
+    transform-origin: 1080px 595px;
+  }
+  @keyframes tangageVoilier {
+    0%, 100% { transform: translate(0, 0) rotate(-1.5deg); }
+    50%      { transform: translate(12px, -2px) rotate(1.5deg); }
+  }
 
 
 </style>
@@ -205,6 +213,23 @@ const DUREE_TRAVERSEE = 20;
     <rect x="225" y="386" width="6" height="8" stroke-width="0.7" />
     <rect x="239" y="386" width="6" height="8" stroke-width="0.7" />
   </g>
+  <!-- VOILIER AU LOIN SUR LA MER -->
+  <g class="voilier" stroke-width="0.85" fill="#f8f4ec">
+    <!-- Grand-voile et Foc -->
+    <path d="M1080 593 L1080 546 Q1093 568 1096 592 Z" />
+    <path d="M1078 593 L1078 555 Q1068 574 1064 593 Z" fill="#f2ece0" />
+    <!-- Mât & Bôme -->
+    <line x1="1079" y1="544" x2="1079" y2="596" stroke-width="0.9" />
+    <line x1="1079" y1="592" x2="1097" y2="592" stroke-width="0.8" />
+    <!-- Petit fanion en haut du mât -->
+    <path d="M1079 544 L1086 546 L1079 548" fill="currentColor" stroke="none" />
+    <!-- Coque fine -->
+    <path d="M1060 595 L1101 595 L1095 601 L1065 601 Z" fill="#eae2d3" />
+    <!-- Sillage et reflet sur l'eau -->
+    <line x1="1052" y1="602" x2="1108" y2="602" stroke-width="0.6" opacity="0.6" />
+    <line x1="1068" y1="606" x2="1092" y2="606" stroke-width="0.5" opacity="0.4" stroke-dasharray="4 3" />
+  </g>
+
 
   <!-- PLAGE, BARQUE, PARASOL & VAGUES ANIMÉES -->
   <path d="M448 560 Q620 578 880 585 Q1160 592 1440 582 L1440 800 L0 800 L0 595 L472 595 Z" fill="#f4ede0" stroke="none" />
