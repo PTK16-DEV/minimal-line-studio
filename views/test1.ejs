@@ -47,35 +47,78 @@ const DUREE_TRAVERSEE = 20;
     0%, 100% { transform: translate(0, 0); }
     50% { transform: translate(18px, -8px); }
   }
+  .falaise-avant {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 20; /* Passe devant l'avion */
+  }
+  .ciel {
+    position: relative;
+    z-index: 10; /* L'avion est entre la mer (0) et la falaise (20) */
+    height: 62vh; /* Hauteur idéale pour sortir juste derrière le village */
+    display: flex;
+    align-items: center;
+  }
+
 
 </style>
 </head>
 <body>
+ <!-- Soleil discret & Nuages lents -->
+  <circle cx="1180" cy="140" r="38" stroke-width="0.7" opacity="0.35" />
+  <svg class="nuage-lent" opacity="0.45" stroke-width="0.8">
+    <path d="M180 150 Q200 130 230 135 Q255 115 285 130 Q315 128 330 148 Z" />
+    <path d="M820 110 Q845 92 875 98 Q900 82 925 98 Q950 96 965 112 Z" />
+ </svg>
+  
+  <svg class="nuage-moyen" opacity="0.35" stroke-width="0.7">
+    <path d="M510 185 Q530 172 555 176 Q575 164 595 178 L505 185 Z" />
+ </svg>
+
+ <!-- Mouettes minimalistes -->
+  <svg class="mouette" stroke-width="0.9" opacity="0.6">
+    <path d="M420 230 Q428 222 435 229 Q442 222 450 230" />
+    <path d="M465 210 Q471 204 476 209 Q481 204 487 210" />
+  </svg>
+ <!-- Horizon marin -->
+  <line x1="0" y1="560" x2="1440" y2="560" stroke-width="0.9" opacity="0.6" />
+<!-- PLAGE EN CONTREBAS & RIVAGE -->
+  <g stroke-width="0.95">
+    <!-- Courbe de la plage de sable -->
+    <path d="M445 560 Q620 578 880 585 Q1160 592 1440 582 L1440 800 L0 800 L0 595 L470 595 Z" fill="#f4ede0" stroke="none" />
+    <path d="M445 560 Q620 578 880 585 Q1160 592 1440 582" fill="none" />
+    <!-- Petits détails sur la plage (barque échouée & parasol minimaliste) -->
+    <path d="M640 572 Q658 580 676 572 Z" fill="#f8f4ec" stroke-width="0.85" />
+    <line x1="658" y1="572" x2="663" y2="558" stroke-width="0.75" />
+    <!-- Parasol minimaliste -->
+    <line x1="780" y1="576" x2="780" y2="554" stroke-width="0.8" />
+    <path d="M764 555 Q780 544 796 555 Z" fill="#f8f4ec" stroke-width="0.8" />
+  </g>
+<!-- MER & VAGUES ANIMÉES -->
+  <svg stroke-width="0.8" opacity="0.75">
+    <!-- Écume du rivage -->
+    <path class="vague-1" d="M465 572 Q640 590 900 596 Q1180 602 1440 593" />
+    <path class="vague-2" d="M480 584 Q660 602 920 608 Q1200 614 1440 605" stroke-dasharray="18 8 4 8" />
+    <!-- Ondulations au large -->
+    <path class="vague-1" d="M520 635 Q680 630 840 638 T1180 635 T1440 640" />
+    <path class="vague-2" d="M420 675 Q600 682 790 674 T1140 680 T1440 674" stroke-dasharray="28 12" />
+    <path class="vague-1" d="M300 720 Q520 714 740 722 T1120 718 T1440 724" />
+    <path class="vague-2" d="M180 762 Q440 768 700 760 T1100 766 T1440 760" stroke-dasharray="35 15" />
+  </svg>
+
 <div class="ciel">
 <!-- DÉCOR : VILLAGE SUR LA FALAISE, PLAGE & MER ANIMÉE -->
 <svg class="paysage-fond" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
   
-  <!-- Soleil discret & Nuages lents -->
-  <circle cx="1180" cy="140" r="38" stroke-width="0.7" opacity="0.35" />
-  <g class="nuage-lent" opacity="0.45" stroke-width="0.8">
-    <path d="M180 150 Q200 130 230 135 Q255 115 285 130 Q315 128 330 148 Z" />
-    <path d="M820 110 Q845 92 875 98 Q900 82 925 98 Q950 96 965 112 Z" />
-  </g>
-  <g class="nuage-moyen" opacity="0.35" stroke-width="0.7">
-    <path d="M510 185 Q530 172 555 176 Q575 164 595 178 L505 185 Z" />
-  </g>
+ 
 
- <!-- Mouettes minimalistes -->
-  <g class="mouette" stroke-width="0.9" opacity="0.6">
-    <path d="M420 230 Q428 222 435 229 Q442 222 450 230" />
-    <path d="M465 210 Q471 204 476 209 Q481 204 487 210" />
-  </g>
-
-  <!-- Horizon marin -->
-  <line x1="0" y1="560" x2="1440" y2="560" stroke-width="0.9" opacity="0.6" />
+ 
 
   <!-- FALAISE ESCARPÉE DÉTAILLÉE (STYLE LIGNE CLAIRE JAPONAISE) -->
-  <g stroke-width="1.05">
+  <svg stroke-width="1.05">
     <!-- Masse rocheuse principale -->
     <path d="M0 315 L98 315 L148 352 L215 362 L272 422 L332 448 L392 522 L448 560 L472 595 L0 595 Z" fill="#f2ece0" />
     
@@ -99,7 +142,7 @@ const DUREE_TRAVERSEE = 20;
     <line x1="192" y1="359" x2="192" y2="371" stroke-width="0.6" />
 
     <!-- Vrais Pins Parasols & Cyprès (emplacements dégagés) -->
-    <g stroke-width="0.85">
+    <svg stroke-width="0.85">
       <!-- Grand Pin sur le promontoire rocheux -->
       <path d="M315 446 Q319 430 313 413 M316 425 L326 417 M315 421 L305 415" fill="none" />
       <path d="M288 414 Q285 404 299 401 Q309 394 323 399 Q339 398 345 408 Q348 415 336 416 Q315 415 288 414 Z" fill="#e6decb" />
@@ -113,11 +156,11 @@ const DUREE_TRAVERSEE = 20;
       <!-- Cyprès effilés à gauche du village -->
       <path d="M18 315 L18 308 M18 310 Q13 309 14 290 Q16 268 18 260 Q20 268 22 290 Q23 309 18 310 Z" fill="#e6decb" stroke-width="0.8" />
       <path d="M29 315 L29 310 M29 311 Q25 310 26 296 Q27 280 29 274 Q31 280 32 296 Q33 310 29 311 Z" fill="#e6decb" stroke-width="0.75" />
-    </g>
-  </g>
+    </svg>
+  </svg>
 
   <!-- VILLAGE MÉDITERRANÉEN ÉTAGÉ AVEC PERSPECTIVE & DÉTAILS -->
-  <g stroke-width="0.95" fill="#f8f4ec">
+  <svg stroke-width="0.95" fill="#f8f4ec">
     
     <!-- 1. Clocher / Campanile en haut -->
     <rect x="40" y="238" width="22" height="77" />
@@ -192,32 +235,8 @@ const DUREE_TRAVERSEE = 20;
     <rect x="220" y="358" width="4" height="10" />
     <rect x="225" y="386" width="6" height="8" stroke-width="0.7" />
     <rect x="239" y="386" width="6" height="8" stroke-width="0.7" />
-  </g>
+  </svg>
    
-  <!-- PLAGE EN CONTREBAS & RIVAGE -->
-  <g stroke-width="0.95">
-    <!-- Courbe de la plage de sable -->
-    <path d="M445 560 Q620 578 880 585 Q1160 592 1440 582 L1440 800 L0 800 L0 595 L470 595 Z" fill="#f4ede0" stroke="none" />
-    <path d="M445 560 Q620 578 880 585 Q1160 592 1440 582" fill="none" />
-    <!-- Petits détails sur la plage (barque échouée & parasol minimaliste) -->
-    <path d="M640 572 Q658 580 676 572 Z" fill="#f8f4ec" stroke-width="0.85" />
-    <line x1="658" y1="572" x2="663" y2="558" stroke-width="0.75" />
-    <!-- Parasol minimaliste -->
-    <line x1="780" y1="576" x2="780" y2="554" stroke-width="0.8" />
-    <path d="M764 555 Q780 544 796 555 Z" fill="#f8f4ec" stroke-width="0.8" />
-  </g>
-<!-- MER & VAGUES ANIMÉES -->
-  <g stroke-width="0.8" opacity="0.75">
-    <!-- Écume du rivage -->
-    <path class="vague-1" d="M465 572 Q640 590 900 596 Q1180 602 1440 593" />
-    <path class="vague-2" d="M480 584 Q660 602 920 608 Q1200 614 1440 605" stroke-dasharray="18 8 4 8" />
-    <!-- Ondulations au large -->
-    <path class="vague-1" d="M520 635 Q680 630 840 638 T1180 635 T1440 640" />
-    <path class="vague-2" d="M420 675 Q600 682 790 674 T1140 680 T1440 674" stroke-dasharray="28 12" />
-    <path class="vague-1" d="M300 720 Q520 714 740 722 T1120 718 T1440 724" />
-    <path class="vague-2" d="M180 762 Q440 768 700 760 T1100 766 T1440 760" stroke-dasharray="35 15" />
-  </g>
-</svg>
 
   <div class="vol">
 <svg id="scene" viewBox="0 0 800 180" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Avion tirant une banderole">
