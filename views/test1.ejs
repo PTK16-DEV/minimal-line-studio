@@ -40,18 +40,64 @@ const DUREE_TRAVERSEE = 20;
     92%  { opacity: 1; }
     100% { transform: translateX(100vw); opacity: 0; }
   }
+  .decor-mer {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ciel {
+    position: relative;
+    z-index: 5;
+    height: 46vh; /* Fait voler l'avion au-dessus de la mer, à hauteur du haut de la falaise */
+    display: flex;
+    align-items: center;
+  }
+  .nuage-lent { animation: deriveNuage 65s linear infinite; }
+  .nuage-moyen { animation: deriveNuage 45s linear infinite; }
+  .vague-1 { animation: fluxVague 4.5s ease-in-out infinite; }
+  .vague-2 { animation: fluxVague 6s ease-in-out infinite reverse; }
+  .mouette { animation: volMouette 7s ease-in-out infinite; }
+
+  @keyframes deriveNuage {
+    0% { transform: translateX(-80px); }
+    100% { transform: translateX(120px); }
+  }
+  @keyframes fluxVague {
+    0%, 100% { transform: translate(0, 0) scaleY(1); }
+    50% { transform: translate(16px, -2px) scaleY(1.06); }
+  }
+  @keyframes volMouette {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(22px, -10px); }
+  }
+  @keyframes traversee {
+    0%   { transform: translateX(-18vw); opacity: 0; }
+    6%   { opacity: 1; }
+    94%  { opacity: 1; }
+    100% { transform: translateX(100vw); opacity: 0; }
+  }
+
 
 </style>
 </head>
 <body>
 <svg class="decor-mer" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMax slice" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Soleil, Nuages & Mouettes -->
+  
+  <!-- Soleil & Nuages lents -->
   <circle cx="1180" cy="140" r="38" stroke-width="0.7" opacity="0.35" />
   <g class="nuage-lent" opacity="0.45" stroke-width="0.8">
     <path d="M180 150 Q200 130 230 135 Q255 115 285 130 Q315 128 330 148 Z" />
     <path d="M820 110 Q845 92 875 98 Q900 82 925 98 Q950 96 965 112 Z" />
   </g>
-  <g stroke-width="0.9" opacity="0.6">
+  <g class="nuage-moyen" opacity="0.35" stroke-width="0.7">
+    <path d="M510 185 Q530 172 555 176 Q575 164 595 178 L505 185 Z" />
+  </g>
+
+  <!-- Mouettes animées -->
+  <g class="mouette" stroke-width="0.9" opacity="0.65">
     <path d="M420 230 Q428 222 435 229 Q442 222 450 230" />
     <path d="M465 210 Q471 204 476 209 Q481 204 487 210" />
   </g>
@@ -59,61 +105,127 @@ const DUREE_TRAVERSEE = 20;
   <!-- Horizon marin -->
   <line x1="0" y1="560" x2="1440" y2="560" stroke-width="0.9" opacity="0.6" />
 
-  <!-- Falaise détaillée & Pins parasols -->
+  <!-- FALAISE ESCARPÉE DÉTAILLÉE -->
   <g stroke-width="1.05">
     <path d="M0 315 L98 315 L148 352 L215 362 L272 422 L332 448 L392 522 L448 560 L472 595 L0 595 Z" fill="#f2ece0" />
     <path d="M98 315 L88 375 L112 435 L92 505 L125 595" fill="none" stroke-width="0.85" />
     <path d="M215 362 L198 425 L224 495 L205 565" fill="none" stroke-width="0.85" />
     <path d="M332 448 L315 505 L342 568" fill="none" stroke-width="0.8" />
-    <path d="M28 365 L52 395 L42 435 M135 390 L162 438 L148 485 L178 538 M252 455 L282 502 L268 548" stroke-width="0.6" opacity="0.6" />
-    <!-- Pins parasols & Cyprès -->
-    <path d="M315 446 Q319 430 313 413 M316 425 L326 417 M315 421 L305 415" fill="none" stroke-width="0.85" />
-    <path d="M288 414 Q285 404 299 401 Q309 394 323 399 Q339 398 345 408 Q348 415 336 416 Q315 415 288 414 Z" fill="#e6decb" stroke-width="0.85" />
-    <path d="M376 512 Q372 498 377 484 M375 494 L383 488 M376 491 L368 486" fill="none" stroke-width="0.85" />
-    <path d="M355 485 Q353 477 364 475 Q373 470 384 474 Q396 474 399 482 Q400 487 391 487 Q374 486 355 485 Z" fill="#e6decb" stroke-width="0.85" />
-    <path d="M18 315 L18 308 M18 310 Q13 309 14 290 Q16 268 18 260 Q20 268 22 290 Q23 309 18 310 Z" fill="#e6decb" stroke-width="0.8" />
+    <path d="M28 365 L52 395 L42 435 M36 382 L64 412" stroke-width="0.6" opacity="0.6" />
+    <path d="M135 390 L162 438 L148 485 L178 538" stroke-width="0.6" opacity="0.6" />
+    <path d="M252 455 L282 502 L268 548" stroke-width="0.6" opacity="0.6" />
+    <path d="M358 510 L382 548 M370 520 L398 556" stroke-width="0.55" opacity="0.55" />
+    <path d="M18 480 L45 480 M118 465 L142 465 M232 525 L258 525 M62 545 L95 545" stroke-width="0.55" opacity="0.5" />
+
+    <!-- Muret de soutènement en pierre -->
+    <path d="M135 352 L212 362 L212 374 L135 364 Z" fill="#e8e0d0" stroke-width="0.8" />
+    <line x1="154" y1="354" x2="154" y2="366" stroke-width="0.6" />
+    <line x1="173" y1="357" x2="173" y2="369" stroke-width="0.6" />
+    <line x1="192" y1="359" x2="192" y2="371" stroke-width="0.6" />
+
+    <!-- Vrais Pins Parasols & Cyprès -->
+    <g stroke-width="0.85">
+      <path d="M315 446 Q319 430 313 413 M316 425 L326 417 M315 421 L305 415" fill="none" />
+      <path d="M288 414 Q285 404 299 401 Q309 394 323 399 Q339 398 345 408 Q348 415 336 416 Q315 415 288 414 Z" fill="#e6decb" />
+      <path d="M295 412 Q315 410 338 413" stroke-width="0.6" opacity="0.6" />
+
+      <path d="M376 512 Q372 498 377 484 M375 494 L383 488 M376 491 L368 486" fill="none" />
+      <path d="M355 485 Q353 477 364 475 Q373 470 384 474 Q396 474 399 482 Q400 487 391 487 Q374 486 355 485 Z" fill="#e6decb" />
+      <path d="M361 484 Q375 483 392 485" stroke-width="0.6" opacity="0.6" />
+
+      <path d="M18 315 L18 308 M18 310 Q13 309 14 290 Q16 268 18 260 Q20 268 22 290 Q23 309 18 310 Z" fill="#e6decb" stroke-width="0.8" />
+      <path d="M29 315 L29 310 M29 311 Q25 310 26 296 Q27 280 29 274 Q31 280 32 296 Q33 310 29 311 Z" fill="#e6decb" stroke-width="0.75" />
+    </g>
   </g>
 
-  <!-- Village Méditerranéen -->
+  <!-- VILLAGE MÉDITERRANÉEN ÉTAGÉ AVEC PERSPECTIVE & DÉTAILS -->
   <g stroke-width="0.95" fill="#f8f4ec">
+    <!-- 1. Clocher / Campanile -->
     <rect x="40" y="238" width="22" height="77" />
     <polygon points="62,238 71,242 71,315 62,315" fill="#eae2d3" />
     <polygon points="36,238 51,210 66,238" />
     <polygon points="66,238 51,210 74,242" fill="#e2d9c8" />
     <line x1="51" y1="200" x2="51" y2="210" stroke-width="0.8" />
+    <line x1="48" y1="203" x2="54" y2="203" stroke-width="0.8" />
+    <path d="M46 262 L46 250 A5 5 0 0 1 56 250 L56 262 Z" fill="#1d2433" stroke="none" opacity="0.15" />
+    <path d="M46 262 L46 250 A5 5 0 0 1 56 250 L56 262 Z" fill="none" stroke-width="0.75" />
+    <circle cx="51" cy="254" r="2.5" stroke-width="0.7" />
     <circle cx="51" cy="276" r="3.5" stroke-width="0.7" />
+
+    <!-- 2. Maison haute avec cheminée, volets et balcon -->
     <rect x="74" y="268" width="36" height="47" />
     <polygon points="110,268 122,273 122,315 110,315" fill="#eae2d3" />
     <polygon points="70,268 92,250 114,268" />
+    <polygon points="114,268 92,250 125,273" fill="#e2d9c8" />
+    <rect x="100" y="246" width="5" height="12" />
+    <line x1="98" y1="246" x2="107" y2="246" stroke-width="1.1" />
     <rect x="81" y="278" width="6" height="9" stroke-width="0.7" />
+    <line x1="79" y1="278" x2="79" y2="287" stroke-width="0.6" />
     <rect x="96" y="278" width="6" height="9" stroke-width="0.7" />
+    <line x1="104" y1="278" x2="104" y2="287" stroke-width="0.6" />
+    <line x1="78" y1="298" x2="105" y2="298" stroke-width="0.8" />
+    <line x1="80" y1="294" x2="103" y2="294" stroke-width="0.6" />
+    <line x1="82" y1="294" x2="82" y2="298" stroke-width="0.5" />
+    <line x1="91" y1="294" x2="91" y2="298" stroke-width="0.5" />
+    <line x1="101" y1="294" x2="101" y2="298" stroke-width="0.5" />
+
+    <!-- 3. Maison terrasse toit plat -->
     <rect x="122" y="294" width="38" height="36" />
     <polygon points="160,294 170,298 170,330 160,330" fill="#eae2d3" />
+    <line x1="120" y1="294" x2="162" y2="294" stroke-width="1.3" />
+    <line x1="122" y1="290" x2="160" y2="290" stroke-width="0.7" />
     <rect x="130" y="304" width="6" height="9" stroke-width="0.7" />
     <rect x="145" y="304" width="6" height="9" stroke-width="0.7" />
+
+    <!-- 4. Maison intermédiaire avec porte voûtée -->
     <rect x="96" y="324" width="44" height="34" />
     <polygon points="92,324 118,309 144,324" />
+    <rect x="105" y="333" width="6" height="8" stroke-width="0.7" />
+    <rect x="122" y="333" width="6" height="8" stroke-width="0.7" />
+    <path d="M113 358 L113 347 A4 4 0 0 1 121 347 L121 358 Z" stroke-width="0.7" />
+
+    <!-- 5. Maison à droite sur le replat -->
     <rect x="166" y="322" width="40" height="36" />
+    <polygon points="206,322 216,327 216,360 206,360" fill="#eae2d3" />
     <polygon points="162,322 186,307 210,322" />
+    <polygon points="210,322 186,307 219,327" fill="#e2d9c8" />
+    <rect x="175" y="332" width="6" height="9" stroke-width="0.7" />
+    <rect x="191" y="332" width="6" height="9" stroke-width="0.7" />
+
+    <!-- 6. Escalier en pierre descendant la falaise -->
+    <path d="M140 358 L152 358 L152 366 L164 366 L164 374 L176 374 L176 382 L195 382" fill="none" stroke-width="0.85" />
+    <path d="M140 353 L152 353 L152 361 L164 361 L164 369 L176 369 L176 377 L195 377" fill="none" stroke-width="0.6" opacity="0.7" />
+
+    <!-- 7. Maison basse accrochée au promontoire -->
     <rect x="215" y="376" width="38" height="34" />
+    <polygon points="253,376 263,381 263,413 253,413" fill="#eae2d3" />
     <polygon points="211,376 234,361 257,376" />
+    <polygon points="257,376 234,361 266,381" fill="#e2d9c8" />
+    <rect x="220" y="358" width="4" height="10" />
     <rect x="225" y="386" width="6" height="8" stroke-width="0.7" />
+    <rect x="239" y="386" width="6" height="8" stroke-width="0.7" />
   </g>
 
-  <!-- Plage, Barque, Parasol & Vagues -->
+  <!-- PLAGE, BARQUE, PARASOL & VAGUES ANIMÉES -->
   <path d="M448 560 Q620 578 880 585 Q1160 592 1440 582 L1440 800 L0 800 L0 595 L472 595 Z" fill="#f4ede0" stroke="none" />
   <path d="M448 560 Q620 578 880 585 Q1160 592 1440 582" fill="none" stroke-width="0.95" />
   <path d="M640 572 Q658 580 676 572 Z" fill="#f8f4ec" stroke-width="0.85" />
   <line x1="780" y1="576" x2="780" y2="554" stroke-width="0.8" />
   <path d="M764 555 Q780 544 796 555 Z" fill="#f8f4ec" stroke-width="0.8" />
+
   <g stroke-width="0.8" opacity="0.75">
     <path class="vague-1" d="M465 572 Q640 590 900 596 Q1180 602 1440 593" />
     <path class="vague-2" d="M480 584 Q660 602 920 608 Q1200 614 1440 605" stroke-dasharray="18 8 4 8" />
     <path class="vague-1" d="M520 635 Q680 630 840 638 T1180 635 T1440 640" />
     <path class="vague-2" d="M420 675 Q600 682 790 674 T1140 680 T1440 674" stroke-dasharray="28 12" />
     <path class="vague-1" d="M300 720 Q520 714 740 722 T1120 718 T1440 724" />
+    <path class="vague-2" d="M180 762 Q440 768 700 760 T1100 766 T1440 760" stroke-dasharray="35 15" />
   </g>
 </svg>
+
+   
+
+
 <div class="ciel">
   <div class="vol">
 <svg id="scene" viewBox="0 0 800 180" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Avion tirant une banderole">
