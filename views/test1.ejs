@@ -74,74 +74,126 @@ const DUREE_TRAVERSEE = 20;
   <!-- Horizon marin -->
   <line x1="0" y1="560" x2="1440" y2="560" stroke-width="0.9" opacity="0.6" />
 
-<!-- FALAISE ESCARPÉE À GAUCHE -->
-  <g stroke-width="1.1">
-    <!-- Contour rocheux principal -->
-    <path d="M0 320 L95 320 L145 355 L210 365 L265 425 L320 445 L385 520 L445 560 L470 595 L0 595 Z" fill="#f3ede2" />
-    <!-- Strates et failles de la falaise (style dessin animé japonais) -->
-    <path d="M60 360 L110 410 L95 465 L140 520" stroke-width="0.7" opacity="0.65" />
-    <path d="M165 385 L195 445 L180 495 L235 555" stroke-width="0.7" opacity="0.65" />
-    <path d="M250 435 L290 490 L275 540" stroke-width="0.65" opacity="0.55" />
-    <path d="M35 450 L75 495 L60 555" stroke-width="0.65" opacity="0.55" />
-        <!-- Vrais Pins Parasols Méditerranéens (emplacements dégagés) -->
+  <!-- FALAISE ESCARPÉE DÉTAILLÉE (STYLE LIGNE CLAIRE JAPONAISE) -->
+  <g stroke-width="1.05">
+    <!-- Masse rocheuse principale -->
+    <path d="M0 315 L98 315 L148 352 L215 362 L272 422 L332 448 L392 522 L448 560 L472 595 L0 595 Z" fill="#f2ece0" />
+    
+    <!-- Plans d'ombre et arêtes rocheuses -->
+    <path d="M98 315 L88 375 L112 435 L92 505 L125 595" fill="none" stroke-width="0.85" />
+    <path d="M215 362 L198 425 L224 495 L205 565" fill="none" stroke-width="0.85" />
+    <path d="M332 448 L315 505 L342 568" fill="none" stroke-width="0.8" />
+
+    <!-- Hachures et fissures minérales fines -->
+    <path d="M28 365 L52 395 L42 435 M36 382 L64 412" stroke-width="0.6" opacity="0.6" />
+    <path d="M135 390 L162 438 L148 485 L178 538" stroke-width="0.6" opacity="0.6" />
+    <path d="M252 455 L282 502 L268 548" stroke-width="0.6" opacity="0.6" />
+    <path d="M358 510 L382 548 M370 520 L398 556" stroke-width="0.55" opacity="0.55" />
+    <!-- Petits traits de relief horizontal -->
+    <path d="M18 480 L45 480 M118 465 L142 465 M232 525 L258 525 M62 545 L95 545" stroke-width="0.55" opacity="0.5" />
+
+    <!-- Muret de soutènement en pierre sous le village -->
+    <path d="M135 352 L212 362 L212 374 L135 364 Z" fill="#e8e0d0" stroke-width="0.8" />
+    <line x1="154" y1="354" x2="154" y2="366" stroke-width="0.6" />
+    <line x1="173" y1="357" x2="173" y2="369" stroke-width="0.6" />
+    <line x1="192" y1="359" x2="192" y2="371" stroke-width="0.6" />
+
+    <!-- Vrais Pins Parasols & Cyprès (emplacements dégagés) -->
     <g stroke-width="0.85">
-      <!-- Grand Pin sur le promontoire rocheux à droite du village -->
-      <path d="M315 452 Q319 435 313 418 M316 430 L326 422 M315 426 L305 420" fill="none" />
-      <path d="M288 419 Q285 409 299 406 Q309 399 323 404 Q339 403 345 413 Q348 420 336 421 Q315 420 288 419 Z" fill="#e6decb" />
-      <path d="M295 417 Q315 415 338 418" stroke-width="0.6" opacity="0.6" />
+      <!-- Grand Pin sur le promontoire rocheux -->
+      <path d="M315 446 Q319 430 313 413 M316 425 L326 417 M315 421 L305 415" fill="none" />
+      <path d="M288 414 Q285 404 299 401 Q309 394 323 399 Q339 398 345 408 Q348 415 336 416 Q315 415 288 414 Z" fill="#e6decb" />
+      <path d="M295 412 Q315 410 338 413" stroke-width="0.6" opacity="0.6" />
 
       <!-- Second Pin surplombant la crique -->
-      <path d="M375 516 Q371 502 376 488 M374 498 L382 492 M375 495 L367 490" fill="none" />
-      <path d="M354 489 Q352 481 363 479 Q372 474 383 478 Q395 478 398 486 Q399 491 390 491 Q373 490 354 489 Z" fill="#e6decb" />
-      <path d="M360 488 Q374 487 391 489" stroke-width="0.6" opacity="0.6" />
+      <path d="M376 512 Q372 498 377 484 M375 494 L383 488 M376 491 L368 486" fill="none" />
+      <path d="M355 485 Q353 477 364 475 Q373 470 384 474 Q396 474 399 482 Q400 487 391 487 Q374 486 355 485 Z" fill="#e6decb" />
+      <path d="M361 484 Q375 483 392 485" stroke-width="0.6" opacity="0.6" />
 
-      <!-- Cyprès effilé tout à gauche du clocher -->
-      <path d="M22 320 L22 312 M22 314 Q16 313 17 294 Q20 272 22 264 Q24 272 27 294 Q28 313 22 314 Z" fill="#e6decb" stroke-width="0.8" />
+      <!-- Cyprès effilés à gauche du village -->
+      <path d="M18 315 L18 308 M18 310 Q13 309 14 290 Q16 268 18 260 Q20 268 22 290 Q23 309 18 310 Z" fill="#e6decb" stroke-width="0.8" />
+      <path d="M29 315 L29 310 M29 311 Q25 310 26 296 Q27 280 29 274 Q31 280 32 296 Q33 310 29 311 Z" fill="#e6decb" stroke-width="0.75" />
     </g>
-
-
-  <!-- VILLAGE ACCROCHÉ À LA FALAISE -->
-  <g stroke-width="0.95" fill="#f8f4ec">
-    <!-- Clocher / Tour en haut du village -->
-    <rect x="42" y="245" width="24" height="75" />
-    <polygon points="38,245 54,218 70,245" />
-    <line x1="54" y1="208" x2="54" y2="218" stroke-width="0.8" />
-    <circle cx="54" cy="262" r="4" stroke-width="0.7" />
-    <path d="M50 295 L50 282 A4 4 0 0 1 58 282 L58 295 Z" stroke-width="0.7" />
-
-<!-- Maisons étagées niveau 1 (haut) -->
-    <rect x="72" y="275" width="38" height="45" />
-    <polygon points="68,275 91,258 114,275" />
-    <rect x="80" y="286" width="6" height="9" stroke-width="0.7" />
-    <rect x="94" y="286" width="6" height="9" stroke-width="0.7" />
-
-    <rect x="114" y="292" width="34" height="38" />
-    <polygon points="110,292 131,278 152,292" />
-    <rect x="125" y="302" width="6" height="8" stroke-width="0.7" />
-
-    <!-- Maisons étagées niveau 2 (milieu) -->
-    <rect x="155" y="325" width="42" height="36" />
-    <polygon points="151,325 176,310 201,325" />
-    <rect x="164" y="335" width="6" height="9" stroke-width="0.7" />
-    <rect x="180" y="335" width="6" height="9" stroke-width="0.7" />
-
-    <rect x="92" y="328" width="46" height="32" />
-    <line x1="92" y1="328" x2="138" y2="328" stroke-width="1.3" />
-    <rect x="102" y="337" width="6" height="8" stroke-width="0.7" />
-    <rect x="118" y="337" width="6" height="8" stroke-width="0.7" />
-
-    <!-- Maisons niveau 3 (bas vers la crique) -->
-    <rect x="205" y="375" width="36" height="34" />
-    <polygon points="201,375 223,362 245,375" />
-    <rect x="218" y="385" width="6" height="8" stroke-width="0.7" />
-  <rect x="255" y="418" width="32" height="28" />
-    <polygon points="252,418 271,406 290,418" />
-    <rect x="267" y="427" width="5" height="7" stroke-width="0.7" />
-
-    <!-- Petit escalier / muret reliant les maisons -->
-    <path d="M138 355 L155 355 L155 365 L197 365 L197 385 L205 385" fill="none" stroke-width="0.8" />
   </g>
 
+  <!-- VILLAGE MÉDITERRANÉEN ÉTAGÉ AVEC PERSPECTIVE & DÉTAILS -->
+  <g stroke-width="0.95" fill="#f8f4ec">
+    
+    <!-- 1. Clocher / Campanile en haut -->
+    <rect x="40" y="238" width="22" height="77" />
+    <!-- Côté ombré du clocher -->
+    <polygon points="62,238 71,242 71,315 62,315" fill="#eae2d3" />
+    <!-- Toit pointu & cloche -->
+    <polygon points="36,238 51,210 66,238" />
+    <polygon points="66,238 51,210 74,242" fill="#e2d9c8" />
+    <line x1="51" y1="200" x2="51" y2="210" stroke-width="0.8" />
+    <line x1="48" y1="203" x2="54" y2="203" stroke-width="0.8" />
+    <!-- Ouverture arche avec petite cloche -->
+    <path d="M46 262 L46 250 A5 5 0 0 1 56 250 L56 262 Z" fill="#1d2433" stroke="none" opacity="0.15" />
+    <path d="M46 262 L46 250 A5 5 0 0 1 56 250 L56 262 Z" fill="none" stroke-width="0.75" />
+    <circle cx="51" cy="254" r="2.5" stroke-width="0.7" />
+    <circle cx="51" cy="276" r="3.5" stroke-width="0.7" />
+
+    <!-- 2. Maison haute avec cheminée et toit à deux pans -->
+    <rect x="74" y="268" width="36" height="47" />
+    <polygon points="110,268 122,273 122,315 110,315" fill="#eae2d3" />
+    <polygon points="70,268 92,250 114,268" />
+    <polygon points="114,268 92,250 125,273" fill="#e2d9c8" />
+    <!-- Cheminée -->
+    <rect x="100" y="246" width="5" height="12" />
+    <line x1="98" y1="246" x2="107" y2="246" stroke-width="1.1" />
+    <!-- Fenêtres avec volets et balcon -->
+    <rect x="81" y="278" width="6" height="9" stroke-width="0.7" />
+    <line x1="79" y1="278" x2="79" y2="287" stroke-width="0.6" />
+    <rect x="96" y="278" width="6" height="9" stroke-width="0.7" />
+    <line x1="104" y1="278" x2="104" y2="287" stroke-width="0.6" />
+    <!-- Petit balcon fer forgé -->
+    <line x1="78" y1="298" x2="105" y2="298" stroke-width="0.8" />
+    <line x1="80" y1="294" x2="103" y2="294" stroke-width="0.6" />
+    <line x1="82" y1="294" x2="82" y2="298" stroke-width="0.5" />
+    <line x1="91" y1="294" x2="91" y2="298" stroke-width="0.5" />
+    <line x1="101" y1="294" x2="101" y2="298" stroke-width="0.5" />
+
+    <!-- 3. Maison terrasse toit plat (style méditerranéen) -->
+    <rect x="122" y="294" width="38" height="36" />
+    <polygon points="160,294 170,298 170,330 160,330" fill="#eae2d3" />
+    <!-- Corniche de toit terrasse -->
+    <line x1="120" y1="294" x2="162" y2="294" stroke-width="1.3" />
+    <line x1="122" y1="290" x2="160" y2="290" stroke-width="0.7" />
+    <rect x="130" y="304" width="6" height="9" stroke-width="0.7" />
+    <rect x="145" y="304" width="6" height="9" stroke-width="0.7" />
+
+    <!-- 4. Maison intermédiaire en avancée -->
+    <rect x="96" y="324" width="44" height="34" />
+    <polygon points="92,324 118,309 144,324" />
+    <rect x="105" y="333" width="6" height="8" stroke-width="0.7" />
+    <rect x="122" y="333" width="6" height="8" stroke-width="0.7" />
+    <!-- Porte voûtée -->
+    <path d="M113 358 L113 347 A4 4 0 0 1 121 347 L121 358 Z" stroke-width="0.7" />
+
+    <!-- 5. Maison à droite sur le replat -->
+    <rect x="166" y="322" width="40" height="36" />
+    <polygon points="206,322 216,327 216,360 206,360" fill="#eae2d3" />
+    <polygon points="162,322 186,307 210,322" />
+    <polygon points="210,322 186,307 219,327" fill="#e2d9c8" />
+    <rect x="175" y="332" width="6" height="9" stroke-width="0.7" />
+    <rect x="191" y="332" width="6" height="9" stroke-width="0.7" />
+
+    <!-- 6. Escalier en pierre descendant la falaise -->
+    <path d="M140 358 L152 358 L152 366 L164 366 L164 374 L176 374 L176 382 L195 382" fill="none" stroke-width="0.85" />
+    <path d="M140 353 L152 353 L152 361 L164 361 L164 369 L176 369 L176 377 L195 377" fill="none" stroke-width="0.6" opacity="0.7" />
+
+    <!-- 7. Maison basse accrochée au promontoire -->
+    <rect x="215" y="376" width="38" height="34" />
+    <polygon points="253,376 263,381 263,413 253,413" fill="#eae2d3" />
+    <polygon points="211,376 234,361 257,376" />
+    <polygon points="257,376 234,361 266,381" fill="#e2d9c8" />
+    <!-- Cheminée & fenêtre -->
+    <rect x="220" y="358" width="4" height="10" />
+    <rect x="225" y="386" width="6" height="8" stroke-width="0.7" />
+    <rect x="239" y="386" width="6" height="8" stroke-width="0.7" />
+  </g>
+   
   <!-- PLAGE EN CONTREBAS & RIVAGE -->
   <g stroke-width="0.95">
     <!-- Courbe de la plage de sable -->
