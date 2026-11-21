@@ -104,60 +104,6 @@ const DUREE_TRAVERSEE = 20;
     <path d="M138 355 L155 355 L155 365 L197 365 L197 385 L205 385" fill="none" stroke-width="0.8" />
   </g>
 
-  <!-- PLAGE EN CONTREBAS & RIVAGE -->
-  <g stroke-width="0.95">
-    <!-- Courbe de la plage de sable -->
-    <path d="M445 560 Q620 578 880 585 Q1160 592 1440 582 L1440 800 L0 800 L0 595 L470 595 Z" fill="#f4ede0" stroke="none" />
-    <path d="M445 560 Q620 578 880 585 Q1160 592 1440 582" fill="none" />
-    <!-- Petits détails sur la plage (barque échouée & parasol minimaliste) -->
-    <path d="M640 572 Q658 580 676 572 Z" fill="#f8f4ec" stroke-width="0.85" />
-    <line x1="658" y1="572" x2="663" y2="558" stroke-width="0.75" />
-    <!-- Parasol minimaliste -->
-    <line x1="780" y1="576" x2="780" y2="554" stroke-width="0.8" />
-    <path d="M764 555 Q780 544 796 555 Z" fill="#f8f4ec" stroke-width="0.8" />
-  </g>
-
-  <!-- MER & VAGUES ANIMÉES -->
-  <g stroke-width="0.8" opacity="0.75">
-    <!-- Écume du rivage -->
-    <path class="vague-1" d="M465 572 Q640 590 900 596 Q1180 602 1440 593" />
-    <path class="vague-2" d="M480 584 Q660 602 920 608 Q1200 614 1440 605" stroke-dasharray="18 8 4 8" />
-    <!-- Ondulations au large -->
-    <path class="vague-1" d="M520 635 Q680 630 840 638 T1180 635 T1440 640" />
-    <path class="vague-2" d="M420 675 Q600 682 790 674 T1140 680 T1440 674" stroke-dasharray="28 12" />
-    <path class="vague-1" d="M300 720 Q520 714 740 722 T1120 718 T1440 724" />
-    <path class="vague-2" d="M180 762 Q440 768 700 760 T1100 766 T1440 760" stroke-dasharray="35 15" />
-  </g>
-</svg>
-
-  /* Décor Village Méditerranéen & Falaise en bord de mer */
-  .paysage-fond {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .ciel { position: relative; z-index: 2; }
-  .nuage-lent { animation: deriveNuage 65s linear infinite; }
-  .nuage-moyen { animation: deriveNuage 45s linear infinite; }
-  .vague-1 { animation: fluxVague 4.5s ease-in-out infinite; }
-  .vague-2 { animation: fluxVague 6s ease-in-out infinite reverse; }
-  .mouette { animation: volMouette 7s ease-in-out infinite; }
-  @keyframes deriveNuage {
-    0% { transform: translateX(-80px); }
-    100% { transform: translateX(120px); }
-  }
-  @keyframes fluxVague {
-    0%, 100% { transform: translateX(0) scaleY(1); }
-    50% { transform: translateX(14px) scaleY(1.04); }
-  }
-  @keyframes volMouette {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(18px, -8px); }
-  }
-
 <div class="ciel">
   <div class="vol">
 <svg id="scene" viewBox="0 0 800 180" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Avion tirant une banderole">
@@ -235,6 +181,71 @@ const DUREE_TRAVERSEE = 20;
 </svg>
   </div>
 </div>
+
+
+
+  <!-- PLAGE EN CONTREBAS & RIVAGE -->
+  <g stroke-width="0.95">
+    <!-- Courbe de la plage de sable -->
+    <path d="M445 560 Q620 578 880 585 Q1160 592 1440 582 L1440 800 L0 800 L0 595 L470 595 Z" fill="#f4ede0" stroke="none" />
+    <path d="M445 560 Q620 578 880 585 Q1160 592 1440 582" fill="none" />
+    <!-- Petits détails sur la plage (barque échouée & parasol minimaliste) -->
+    <path d="M640 572 Q658 580 676 572 Z" fill="#f8f4ec" stroke-width="0.85" />
+    <line x1="658" y1="572" x2="663" y2="558" stroke-width="0.75" />
+    <!-- Parasol minimaliste -->
+    <line x1="780" y1="576" x2="780" y2="554" stroke-width="0.8" />
+    <path d="M764 555 Q780 544 796 555 Z" fill="#f8f4ec" stroke-width="0.8" />
+  </g>
+
+  <!-- MER & VAGUES ANIMÉES -->
+  <g stroke-width="0.8" opacity="0.75">
+    <!-- Écume du rivage -->
+    <path class="vague-1" d="M465 572 Q640 590 900 596 Q1180 602 1440 593" />
+    <path class="vague-2" d="M480 584 Q660 602 920 608 Q1200 614 1440 605" stroke-dasharray="18 8 4 8" />
+    <!-- Ondulations au large -->
+    <path class="vague-1" d="M520 635 Q680 630 840 638 T1180 635 T1440 640" />
+    <path class="vague-2" d="M420 675 Q600 682 790 674 T1140 680 T1440 674" stroke-dasharray="28 12" />
+    <path class="vague-1" d="M300 720 Q520 714 740 722 T1120 718 T1440 724" />
+    <path class="vague-2" d="M180 762 Q440 768 700 760 T1100 766 T1440 760" stroke-dasharray="35 15" />
+  </g>
+</svg>
+
+  /* Décor Village Méditerranéen & Falaise en bord de mer */
+  .paysage-fond {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .ciel {
+    position: relative;
+    z-index: 10;
+    height: 45vh; /* Fait voler l'avion dans la moitié haute du ciel, au-dessus du village */
+    display: flex;
+    align-items: center;
+  }
+
+ 
+  .nuage-lent { animation: deriveNuage 65s linear infinite; }
+  .nuage-moyen { animation: deriveNuage 45s linear infinite; }
+  .vague-1 { animation: fluxVague 4.5s ease-in-out infinite; }
+  .vague-2 { animation: fluxVague 6s ease-in-out infinite reverse; }
+  .mouette { animation: volMouette 7s ease-in-out infinite; }
+  @keyframes deriveNuage {
+    0% { transform: translateX(-80px); }
+    100% { transform: translateX(120px); }
+  }
+  @keyframes fluxVague {
+    0%, 100% { transform: translateX(0) scaleY(1); }
+    50% { transform: translateX(14px) scaleY(1.04); }
+  }
+  @keyframes volMouette {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(18px, -8px); }
+  }
+
 <script>
 var TAU = Math.PI * 2;
 var PLANE_C = { x: 630, y: 90 };
