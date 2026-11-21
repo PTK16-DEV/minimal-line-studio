@@ -28,7 +28,14 @@ const DUREE_TRAVERSEE = 18;
     pointer-events: none;
     z-index: 0;
   }
-  .ciel { position: relative; z-index: 5; }
+    .ciel {
+    position: relative;
+    z-index: 5;
+    height: 36vh; /* L'avion vole un peu plus haut, bien au-dessus de la croix du clocher */
+    display: flex;
+    align-items: center;
+  }
+
   .nuage-lent { animation: deriveNuage 65s linear infinite; }
   .vague-1 { animation: fluxVague 4.5s ease-in-out infinite; }
   .vague-2 { animation: fluxVague 6s ease-in-out infinite reverse; }
@@ -123,6 +130,8 @@ const DUREE_TRAVERSEE = 18;
 
   <!-- Horizon marin -->
   <line x1="0" y1="560" x2="1440" y2="560" stroke-width="0.9" opacity="0.6" />
+
+<g transform="translate(0, 75)">
 
   <!-- FALAISE ESCARPÉE DÉTAILLÉE -->
   <g stroke-width="1.05">
@@ -292,7 +301,7 @@ const DUREE_TRAVERSEE = 18;
     <path d="M726 735 Q760 740 794 735" stroke-width="0.7" opacity="0.7" />
     <path d="M738 740 Q760 743 782 740" stroke-width="0.55" opacity="0.45" stroke-dasharray="6 4" />
   </g>
-
+</g>
 </svg>
 
    
