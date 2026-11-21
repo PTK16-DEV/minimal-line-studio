@@ -12,11 +12,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.render('index');
 });
-// Route pour ta page de test
+// Route pour ta page de test1
 app.get('/test1', (req, res) => {
   res.render('test1');
 });
-
+// Route pour ta page de test2
+app.get('/test2', (req, res) => {
+  res.render('test2');
+});
 
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);
