@@ -9,8 +9,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Page principale (ta vitrine de démo)
-app.get('/banniere-avion-labo', (req, res) => {
-  res.render('banniere-avion-labo');
+app.get('/', (req, res) => {
+  res.render('index');
 });
 
 app.listen(PORT, () => {
