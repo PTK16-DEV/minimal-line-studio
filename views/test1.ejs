@@ -293,12 +293,12 @@ const DUREE_TRAVERSEE = 25;
       <path d="M415 568 Q740 571 1060 567 T1440 566" />
       <path d="M425 584 Q750 588 1080 583 T1440 580" stroke-dasharray="28 14" />
     </g>
-    <!-- Ondulations douces et poétiques sur la mer (sans aucun chevauchement) -->
-    <g class="houle" stroke-width="0.7" opacity="0.45">
-      <!-- Première ondulation douce au large -->
-      <path d="M415 552 Q580 546 740 553 T1080 550 T1440 554" />
-      <!-- Seconde ondulation discontinue qui laisse respirer l'eau -->
-      <path d="M435 568 Q620 574 810 567 T1180 573 T1440 568" stroke-dasharray="45 18 12 18" />
+       <!-- 2 Ondulations douces et parallèles (zéro croisement possible) -->
+    <g stroke-width="0.85" opacity="0.75">
+      <path class="vague-1" d="M415 553 Q585 549 755 553 Q925 557 1095 553 Q1265 549 1440 553" />
+      <path class="vague-2" d="M425 572 Q600 576 775 572 Q950 568 1125 572 Q1300 576 1440 572" stroke-dasharray="36 14 8 14" />
+    </g>
+
       <!-- Troisième ondulation délicate avant le rivage -->
       <path d="M425 584 Q650 580 880 586 T1240 582 T1440 585" stroke-dasharray="60 22" />
     </g>
