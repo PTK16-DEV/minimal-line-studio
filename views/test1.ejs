@@ -104,14 +104,16 @@ const DUREE_TRAVERSEE = 25;
 
 
 
-  .barque-pecheur {
-    animation: berceBarque 4.2s ease-in-out infinite;
-    transform-origin: 760px 725px;
+    .barque-pecheur {
+    transform-box: fill-box;
+    transform-origin: 50% 85%;
+    animation: berceBarque 3.8s ease-in-out infinite;
   }
   @keyframes berceBarque {
-    0%, 100% { transform: translateY(0) rotate(-1.2deg); }
-    50%      { transform: translateY(-3px) rotate(1.4deg); }
+    0%, 100% { transform: translateY(0px) rotate(-2.2deg); }
+    50%      { transform: translateY(-4px) rotate(2.2deg); }
   }
+
 
 
 
