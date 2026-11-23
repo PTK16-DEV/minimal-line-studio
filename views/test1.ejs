@@ -76,14 +76,17 @@ const DUREE_TRAVERSEE = 25;
     0% { transform: translateX(-80px); }
     100% { transform: translateX(120px); }
   }
-  @keyframes fluxVague {
-    0%, 100% { transform: translate(0, 0) scaleY(1); }
-    50% { transform: translate(16px, -2px) scaleY(1.06); }
-  }
   @keyframes volMouette {
     0%, 100% { transform: translate(0, 0); }
     50% { transform: translate(22px, -10px); }
   }
+@keyframes ressacDoux {
+    0%, 100% { transform: translateX(0px); }
+    50%      { transform: translateX(12px); }
+  }
+  @keyframes ressacEcume {
+    0%, 100% { transform: translate(0px, 0px); }
+    50%      { transform: translate(8px, 2px); }
   @keyframes traversee {
     0%   { transform: translateX(-18vw); opacity: 0; }
     6%   { opacity: 1; }
