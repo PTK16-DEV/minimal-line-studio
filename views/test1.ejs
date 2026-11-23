@@ -40,7 +40,11 @@ const DUREE_TRAVERSEE = 25;
   .vague-1 { animation: fluxVague 4.5s ease-in-out infinite; }
   .vague-2 { animation: fluxVague 6s ease-in-out infinite reverse; }
   @keyframes deriveNuage { 0% { transform: (-60px); } 100% { transform: (90px); } }
-  @keyframes fluxVague { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(14px); } }
+    @keyframes fluxVague {
+    0%, 100% { transform: translateX(0px); }
+    50%      { transform: translateX(10px); }
+  }
+
   @keyframes traversee {
     0%   { transform: translateX(-50vw); opacity: 0; }
     8%   { opacity: 1; }
