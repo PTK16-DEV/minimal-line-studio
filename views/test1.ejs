@@ -286,19 +286,19 @@ const DUREE_TRAVERSEE = 25;
   <!-- 1. HORIZON MARIN & REFLETS DU SOLEIL SUR L'EAU -->
   <line x1="409" y1="535" x2="1440" y2="535" stroke-width="0.9" opacity="0.55" />
 
-  <!-- Scintillement poétique du soleil à la surface de la mer (sous le soleil x=1210) -->
-  <g stroke-width="0.65" opacity="0.45">
-    <line class="vague-1" x1="1175" y1="543" x2="1245" y2="543" />
-    <line class="vague-2" x1="1185" y1="550" x2="1235" y2="550" stroke-dasharray="14 6 4 6" />
-    <line class="vague-1" x1="1192" y1="557" x2="1228" y2="557" stroke-dasharray="10 8" />
-    <line class="vague-2" x1="1200" y1="564" x2="1220" y2="564" />
-  </g>
-
-      <!-- Ondulations au large (parallèles, sans jamais toucher la plage à droite) -->
-    <g stroke-width="0.7" opacity="0.45">
-      <path class="vague-1" d="M420 552 Q720 556 1020 552 T1440 550" />
-      <path class="vague-1" d="M430 572 Q740 578 1060 572 T1440 568" stroke-dasharray="28 14" />
+      <!-- Scintillement du soleil juste sous l'horizon (y=541 à 551) -->
+    <g stroke-width="0.6" opacity="0.4">
+      <line x1="1250" y1="541" x2="1305" y2="541" />
+      <line x1="1262" y1="547" x2="1295" y2="547" stroke-dasharray="10 5" />
+      <line x1="1270" y1="553" x2="1288" y2="553" />
     </g>
+
+    <!-- Houle douce au large (placée plus bas à y=568 et y=584, zéro contact avec le reflet) -->
+    <g class="houle" stroke-width="0.7" opacity="0.45">
+      <path d="M415 568 Q740 571 1060 567 T1440 566" />
+      <path d="M425 584 Q750 588 1080 583 T1440 580" stroke-dasharray="28 14" />
+    </g>
+
 
 
   <!-- 2. VOILIER AU LARGE (100% VISIBLE, BIEN AU-DESSUS DE LA PLAGE) -->
