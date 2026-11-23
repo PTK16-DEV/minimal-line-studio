@@ -177,6 +177,19 @@ const DUREE_TRAVERSEE = 25;
      <!-- 1. MER EN ARRIÈRE-PLAN (glissée sous la falaise, zéro bord vertical) -->
 
     <line x1="409" y1="535" x2="1440" y2="535" stroke-width="0.9" opacity="0.6" />
+<!-- Troisième ondulation délicate avant le rivage -->
+      <path d="M425 584 Q650 580 880 586 T1240 582 T1440 585" stroke-dasharray="60 22" />
+    </g>
+    <polygon points="355,535 1440,535 1440,620 445,620" fill="#eae5d9" stroke="none" />
+
+
+        <g class="vague-1" stroke-width="0.8" opacity="0.7">
+      <path d="M445 548 Q540 544 635 548 Q730 552 835 548 Q940 544 1045 548 Q1150 552 1255 548 Q1350 544 1440 548" />
+      <path d="M465 564 Q550 559 635 564 M750 565 Q850 560 950 565 M1120 563 Q1220 558 1320 563" stroke-width="0.9" />
+    </g>
+    <g class="vague-2" stroke-width="0.75" opacity="0.65">
+      <path d="M475 580 Q580 584 685 580 Q800 576 925 580 Q1050 584 1175 580 Q1310 576 1440 580" stroke-dasharray="38 14 8 14" />
+    </g>
 
   <!-- FALAISE ESCARPÉE DÉTAILLÉE -->
   <g stroke-width="1.05">
@@ -288,7 +301,7 @@ const DUREE_TRAVERSEE = 25;
        ========================================================= -->
 
   <!-- 1. HORIZON MARIN & REFLETS DU SOLEIL SUR L'EAU -->
-  <line x1="355" y1="535" x2="1440" y2="535" stroke-width="0.9" opacity="0.6" />
+ <line x1="402" y1="535" x2="1440" y2="535" stroke-width="0.9" opacity="0.6" />
 
 
     <!-- Houle douce au large (placée plus bas à y=568 et y=584, zéro contact avec le reflet) -->
@@ -301,24 +314,6 @@ const DUREE_TRAVERSEE = 25;
       <path class="vague-1" d="M415 553 Q585 549 755 553 Q925 557 1095 553 Q1265 549 1440 553" />
       <path class="vague-2" d="M425 572 Q600 576 775 572 Q950 568 1125 572 Q1300 576 1440 572" stroke-dasharray="36 14 8 14" />
     </g>
-
-      <!-- Troisième ondulation délicate avant le rivage -->
-      <path d="M425 584 Q650 580 880 586 T1240 582 T1440 585" stroke-dasharray="60 22" />
-    </g>
-    <polygon points="355,535 1440,535 1440,620 445,620" fill="#eae5d9" stroke="none" />
-
-
-        <g class="vague-1" stroke-width="0.8" opacity="0.7">
-      <path d="M445 548 Q540 544 635 548 Q730 552 835 548 Q940 544 1045 548 Q1150 552 1255 548 Q1350 544 1440 548" />
-      <path d="M465 564 Q550 559 635 564 M750 565 Q850 560 950 565 M1120 563 Q1220 558 1320 563" stroke-width="0.9" />
-    </g>
-    <g class="vague-2" stroke-width="0.75" opacity="0.65">
-      <path d="M475 580 Q580 584 685 580 Q800 576 925 580 Q1050 584 1175 580 Q1310 576 1440 580" stroke-dasharray="38 14 8 14" />
-    </g>
-
-
-
-
 
       <!-- Voilier bien ancré dans l'eau sous l'horizon (y=568) -->
     <g transform="translate(-40, -92)">
