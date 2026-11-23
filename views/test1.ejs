@@ -354,19 +354,30 @@ const DUREE_TRAVERSEE = 25;
     </g>
   </g>
 
-      <!-- Végétation au pied de la falaise (descendue de 12px pour bien poser sur le bord de l'eau) -->
-    <g transform="translate(0, 12)">
-      <g stroke-width="0.85">
-        <path d="M372 588 Q370 574 384 572 Q394 562 410 568 Q424 564 434 576 Q446 578 444 590 Z" fill="#e6decb" />
-        <path d="M428 592 Q432 581 446 580 Q458 574 470 584 Q480 586 476 595 Z" fill="#eae2d3" />
-        <g transform="translate(492, 594)" stroke-width="0.8">
-          <path d="M0 0 Q-10 -12 -18 -14 Q-9 -7 -3 0" fill="#e6decb" />
-          <path d="M0 0 Q-5 -16 -7 -22 Q-1 -12 0 0" fill="#e6decb" />
-          <path d="M0 0 Q4 -17 7 -23 Q6 -11 1 0" fill="#e6decb" />
-          <path d="M0 0 Q11 -12 19 -13 Q10 -6 2 0" fill="#e6decb" />
-        </g>
+             <!-- 3. COIN CRIQUE AU PREMIER PLAN (posé sur le sable et contre la falaise) -->
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <!-- Buissons de maquis nichés contre la pente de la falaise -->
+      <path d="M368 598 Q366 581 382 579 Q394 567 412 574 Q428 570 440 583 Q452 586 448 600 Q410 603 368 598 Z" fill="#e6decb" stroke-width="0.85" />
+      <path d="M384 591 Q398 583 414 590" fill="none" stroke-width="0.6" opacity="0.6" />
+      <path d="M424 603 Q429 590 444 589 Q458 583 470 594 Q480 597 475 606 Q450 608 424 603 Z" fill="#eae2d3" stroke-width="0.85" />
+
+      <!-- Rochers côtiers au bord de l'eau -->
+      <path d="M456 609 L466 596 L482 595 L493 606 L488 613 L454 613 Z" fill="#e4dccb" stroke-width="0.9" />
+      <path d="M470 596 L475 604 L472 612" fill="none" stroke-width="0.6" opacity="0.6" />
+      <path d="M490 611 L498 602 L509 604 L513 613 L489 613 Z" fill="#eae2d3" stroke-width="0.8" />
+      <!-- Petite ride d'écume autour des rochers -->
+      <path class="ecume" d="M448 614 Q482 618 518 614" fill="none" stroke-width="0.65" opacity="0.75" />
+
+      <!-- Agave sculpté posé sur le sable à droite des rochers -->
+      <g transform="translate(526, 613)" stroke-width="0.8">
+        <path d="M0 0 Q-10 -12 -18 -14 Q-9 -7 -3 0" fill="#e6decb" />
+        <path d="M0 0 Q-5 -16 -7 -22 Q-1 -12 0 0" fill="#e6decb" />
+        <path d="M0 0 Q4 -17 7 -23 Q6 -11 1 0" fill="#e6decb" />
+        <path d="M0 0 Q11 -12 19 -13 Q10 -6 2 0" fill="#e6decb" />
       </g>
     </g>
+
+
 
 
   <!-- 5. LA PLAGE DE SABLE DOUX (s'étire élégamment du pied de la falaise vers toute la droite) -->
