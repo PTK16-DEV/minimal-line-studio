@@ -174,14 +174,13 @@ const DUREE_TRAVERSEE = 25;
 
 <g transform="translate(0, 75)">
 </g>
-    <!-- 1. MER EN ARRIÈRE-PLAN (passe sous la falaise, zéro bord vertical) -->
-    <rect x="350" y="535" width="1090" height="85" fill="#eae5d9" stroke="none" />
+     <!-- 1. MER EN ARRIÈRE-PLAN (glissée sous la falaise, zéro bord vertical) -->
+    <rect x="300" y="535" width="1140" height="85" fill="#eae5d9" stroke="none" />
     <line x1="409" y1="535" x2="1440" y2="535" stroke-width="0.9" opacity="0.6" />
-
 
   <!-- FALAISE ESCARPÉE DÉTAILLÉE -->
   <g stroke-width="1.05">
-    <path d="M0 315 L98 315 L148 352 L215 362 L272 422 L332 448 L392 522 L448 560 L472 595 L0 595 Z" fill="#f2ece0" />
+    <path d="M0 315 L98 315 L148 352 L215 362 L272 422 L332 448 L392 522 L448 560 L472 615 L0 615 Z" fill="#f2ece0" />
     <path d="M98 315 L88 375 L112 435 L92 505 L125 595" fill="none" stroke-width="0.85" />
     <path d="M215 362 L198 425 L224 495 L205 565" fill="none" stroke-width="0.85" />
     <path d="M332 448 L315 505 L342 568" fill="none" stroke-width="0.8" />
@@ -358,32 +357,6 @@ const DUREE_TRAVERSEE = 25;
     </g>
   </g>
 
-             <!-- 3. COIN CRIQUE AU PREMIER PLAN (posé sur le sable et contre la falaise) -->
-    <g stroke-linecap="round" stroke-linejoin="round">
-      <!-- Buissons de maquis nichés contre la pente de la falaise -->
-      <path d="M368 598 Q366 581 382 579 Q394 567 412 574 Q428 570 440 583 Q452 586 448 600 Q410 603 368 598 Z" fill="#e6decb" stroke-width="0.85" />
-      <path d="M384 591 Q398 583 414 590" fill="none" stroke-width="0.6" opacity="0.6" />
-      <path d="M424 603 Q429 590 444 589 Q458 583 470 594 Q480 597 475 606 Q450 608 424 603 Z" fill="#eae2d3" stroke-width="0.85" />
-
-      <!-- Rochers côtiers au bord de l'eau -->
-      <path d="M456 609 L466 596 L482 595 L493 606 L488 613 L454 613 Z" fill="#e4dccb" stroke-width="0.9" />
-      <path d="M470 596 L475 604 L472 612" fill="none" stroke-width="0.6" opacity="0.6" />
-      <path d="M490 611 L498 602 L509 604 L513 613 L489 613 Z" fill="#eae2d3" stroke-width="0.8" />
-      <!-- Petite ride d'écume autour des rochers -->
-      <path class="ecume" d="M448 614 Q482 618 518 614" fill="none" stroke-width="0.65" opacity="0.75" />
-
-      <!-- Agave sculpté posé sur le sable à droite des rochers -->
-      <g transform="translate(526, 613)" stroke-width="0.8">
-        <path d="M0 0 Q-10 -12 -18 -14 Q-9 -7 -3 0" fill="#e6decb" />
-        <path d="M0 0 Q-5 -16 -7 -22 Q-1 -12 0 0" fill="#e6decb" />
-        <path d="M0 0 Q4 -17 7 -23 Q6 -11 1 0" fill="#e6decb" />
-        <path d="M0 0 Q11 -12 19 -13 Q10 -6 2 0" fill="#e6decb" />
-      </g>
-    </g>
-
-
-
-
   <!-- 5. LA PLAGE DE SABLE DOUX (s'étire élégamment du pied de la falaise vers toute la droite) -->
   <path d="M445 595 Q640 612 920 605 Q1180 598 1440 588 L1440 800 L0 800 L0 595 Z" fill="#f4ede0" stroke="none" />
   <!-- Ligne de rivage principale -->
@@ -439,6 +412,25 @@ const DUREE_TRAVERSEE = 25;
       </g>
 
   </g>
+    <!-- COIN CRIQUE AU PREMIER PLAN (posé sur le sable, zéro coupure) -->
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <path d="M368 598 Q366 581 382 579 Q394 567 412 574 Q428 570 440 583 Q452 586 448 600 Q410 603 368 598 Z" fill="#e6decb" stroke-width="0.85" />
+      <path d="M384 591 Q398 583 414 590" fill="none" stroke-width="0.6" opacity="0.6" />
+      <path d="M424 603 Q429 590 444 589 Q458 583 470 594 Q480 597 475 606 Q450 608 424 603 Z" fill="#eae2d3" stroke-width="0.85" />
+
+      <path d="M456 609 L466 596 L482 595 L493 606 L488 613 L454 613 Z" fill="#e4dccb" stroke-width="0.9" />
+      <path d="M470 596 L475 604 L472 612" fill="none" stroke-width="0.6" opacity="0.6" />
+      <path d="M490 611 L498 602 L509 604 L513 613 L489 613 Z" fill="#eae2d3" stroke-width="0.8" />
+      <path class="ecume" d="M448 614 Q482 618 518 614" fill="none" stroke-width="0.65" opacity="0.75" />
+
+      <g transform="translate(526, 613)" stroke-width="0.8">
+        <path d="M0 0 Q-10 -12 -18 -14 Q-9 -7 -3 0" fill="#e6decb" />
+        <path d="M0 0 Q-5 -16 -7 -22 Q-1 -12 0 0" fill="#e6decb" />
+        <path d="M0 0 Q4 -17 7 -23 Q6 -11 1 0" fill="#e6decb" />
+        <path d="M0 0 Q11 -12 19 -13 Q10 -6 2 0" fill="#e6decb" />
+      </g>
+    </g>
+
       
 </svg>
 
