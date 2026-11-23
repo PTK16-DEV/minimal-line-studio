@@ -11,13 +11,13 @@
 const TEXTE_BANNIERE = "LABOFFICE RECRUTE";   // ← votre texte (la taille des lettres s'adapte automatiquement)
 
 /* Optionnel : durée de la traversée de l'écran, en secondes */
-const DUREE_TRAVERSEE = 18;
+const DUREE_TRAVERSEE = 25;
 </script>
 <style>
   html, body { margin: 0; height: 100%; }
   body { background: linear-gradient(#f8f4ec, #eee6d6); color: #1d2433; overflow: hidden; }
   .ciel { height: 100vh; display: flex; align-items: center; }
-  .vol { width: clamp(480px, 62vw, 960px); flex: none; animation: traversee 18s linear infinite; will-change: transform; }
+  .vol { width: clamp(480px, 62vw, 960px); flex: none; animation: traversee 28s linear infinite; will-change: transform; }
   .vol svg { display: block; width: 120%; height: auto; overflow: visible; }
   @keyframes traversee { from { transform: translateX(-100%); } to { transform: translateX(100vw); } }
   .decor-mer {
@@ -287,12 +287,12 @@ const DUREE_TRAVERSEE = 18;
     <line class="vague-2" x1="1200" y1="564" x2="1220" y2="564" />
   </g>
 
-  <!-- Ondulations douces de la mer au large -->
-  <g stroke-width="0.7" opacity="0.5">
-    <path class="vague-1" d="M360 552 Q560 548 760 554 T1140 551 T1440 554" />
-    <path class="vague-2" d="M390 568 Q610 573 830 567 T1210 572 T1440 568" stroke-dasharray="28 14" />
-    <path class="vague-1" d="M410 585 Q640 581 880 587 T1250 584 T1440 587" />
-  </g>
+      <!-- Ondulations au large (parallèles, sans jamais toucher la plage à droite) -->
+    <g stroke-width="0.7" opacity="0.45">
+      <path class="vague-1" d="M420 552 Q720 556 1020 552 T1440 550" />
+      <path class="vague-1" d="M430 572 Q740 578 1060 572 T1440 568" stroke-dasharray="28 14" />
+    </g>
+
 
   <!-- 2. VOILIER AU LARGE (100% VISIBLE, BIEN AU-DESSUS DE LA PLAGE) -->
   <g class="voilier" transform="translate(-40, -135)" stroke-width="0.9" fill="#f8f4ec">
@@ -347,16 +347,14 @@ const DUREE_TRAVERSEE = 18;
   <!-- Ligne de rivage principale -->
   <path d="M445 595 Q640 612 920 605 Q1180 598 1440 588" fill="none" stroke-width="0.95" />
 
-  <!-- 6. VAGUES ANIMÉES QUI CARESSENT LE SABLE (du pied de la falaise jusqu'à droite) -->
-  <g stroke-width="0.8" opacity="0.75">
-    <!-- Première vague d'écume le long du rivage -->
-    <path class="vague-1" d="M430 601 Q640 619 920 612 Q1180 605 1440 595" />
-    <!-- Seconde vague plus fine et nacrée -->
-    <path class="vague-2" d="M415 609 Q635 627 920 620 Q1180 613 1440 603" stroke-dasharray="24 10 5 10" />
-    <!-- Petites vaguelettes courbes dans l'anse au pied de la falaise -->
-    <path class="vague-1" d="M385 597 Q430 608 475 613" stroke-width="0.7" />
-    <path class="vague-2" d="M368 604 Q412 615 455 620" stroke-width="0.65" stroke-dasharray="10 6" />
-  </g>
+      <!-- Vagues animées sur le sable (synchronisées pour ne jamais se croiser) -->
+    <g stroke-width="0.8" opacity="0.75">
+      <path class="vague-1" d="M430 601 Q640 619 920 612 Q1180 605 1440 595" />
+      <path class="vague-1" d="M415 609 Q635 627 920 620 Q1180 613 1440 603" stroke-dasharray="24 10 5 10" />
+      <path class="vague-1" d="M385 597 Q430 608 475 613" stroke-width="0.7" />
+      <path class="vague-1" d="M368 604 Q412 615 455 620" stroke-width="0.65" stroke-dasharray="10 6" />
+    </g>
+
 
   <!-- 7. ÉLÉMENTS POÉTIQUES SUR LE SABLE SEC (BIEN À DROITE ET AU CENTRE) -->
   <g stroke-linecap="round" stroke-linejoin="round">
