@@ -273,66 +273,111 @@ const DUREE_TRAVERSEE = 18;
     <rect x="239" y="386" width="6" height="8" stroke-width="0.7" />
   </g>
 
-  <!-- PLAGE, BARQUE, PARASOL & VAGUES ANIMÉES -->
-  <path d="M448 560 Q620 578 880 585 Q1160 592 1440 582 L1440 800 L0 800 L0 595 L472 595 Z" fill="#f4ede0" stroke="none" />
-  <path d="M448 560 Q620 578 880 585 Q1160 592 1440 582" fill="none" stroke-width="0.95" />
-  <path d="M640 572 Q658 580 676 572 Z" fill="#f8f4ec" stroke-width="0.85" />
-  <line x1="780" y1="576" x2="780" y2="554" stroke-width="0.8" />
-  <path d="M764 555 Q780 544 796 555 Z" fill="#f8f4ec" stroke-width="0.8" />
+    <!-- =========================================================
+       MER, RIVAGE EN CRIQUE, PLAGE & BOIS FLOTTÉ (BIEN ÉTAGÉS)
+       ========================================================= -->
 
-  <g stroke-width="0.8" opacity="0.75">
-    <path class="vague-1" d="M465 572 Q640 590 900 596 Q1180 602 1440 593" />
-    <path class="vague-2" d="M480 584 Q660 602 920 608 Q1200 614 1440 605" stroke-dasharray="18 8 4 8" />
-    <path class="vague-1" d="M520 635 Q680 630 840 638 T1180 635 T1440 640" />
-    <path class="vague-2" d="M420 675 Q600 682 790 674 T1140 680 T1440 674" stroke-dasharray="28 12" />
-    <path class="vague-1" d="M300 720 Q520 714 740 722 T1120 718 T1440 724" />
-    <path class="vague-2" d="M180 762 Q440 768 700 760 T1100 766 T1440 760" stroke-dasharray="35 15" />
-  </g>
-<!-- VOILIER AU LOIN SUR LA MER -->
-  <g class="voilier" stroke-width="0.85" fill="#f8f4ec">
-    <!-- Grand-voile et Foc -->
-    <path d="M1080 593 L1080 546 Q1093 568 1096 592 Z" />
-    <path d="M1078 593 L1078 555 Q1068 574 1064 593 Z" fill="#f2ece0" />
-    <!-- Mât & Bôme -->
-    <line x1="1079" y1="544" x2="1079" y2="596" stroke-width="0.9" />
-    <line x1="1079" y1="592" x2="1097" y2="592" stroke-width="0.8" />
-    <!-- Petit fanion en haut du mât -->
-    <path d="M1079 544 L1086 546 L1079 548" fill="currentColor" stroke="none" />
-    <!-- Coque fine -->
-    <path d="M1060 595 L1101 595 L1095 601 L1065 601 Z" fill="#eae2d3" />
-    <!-- Sillage et reflet sur l'eau -->
-    <line x1="1052" y1="602" x2="1108" y2="602" stroke-width="0.6" opacity="0.6" />
-    <line x1="1068" y1="606" x2="1092" y2="606" stroke-width="0.5" opacity="0.4" stroke-dasharray="4 3" />
+  <!-- 1. HORIZON MARIN & ONDULATIONS AU LARGE (y=550 à y=620) -->
+  <line x1="0" y1="550" x2="1440" y2="550" stroke-width="0.9" opacity="0.6" />
+  <g stroke-width="0.75" opacity="0.6">
+    <path class="vague-1" d="M380 564 Q580 560 780 566 T1180 563 T1440 566" />
+    <path class="vague-2" d="M410 578 Q620 583 840 577 T1220 582 T1440 578" stroke-dasharray="26 12" />
+    <path class="vague-1" d="M430 594 Q660 590 900 596 T1260 593 T1440 596" />
   </g>
 
-  <!-- BARQUE & PÊCHEUR AU PREMIER PLAN SUR LA MER -->
-  <g transform="translate(0, -65)">
+  <!-- 2. VOILIER AU LARGE (navigue bien dans l'eau, avant le rivage) -->
+  <g class="voilier" transform="translate(80, -78)" stroke-width="0.9" fill="#f8f4ec">
+    <path d="M1080 658 L1080 605 Q1095 630 1098 657 Z" />
+    <path d="M1078 658 L1078 615 Q1066 636 1062 658 Z" fill="#f2ece0" />
+    <line x1="1079" y1="603" x2="1079" y2="661" stroke-width="0.95" />
+    <line x1="1079" y1="657" x2="1099" y2="657" stroke-width="0.85" />
+    <path d="M1079 603 L1087 605 L1079 607" fill="currentColor" stroke="none" />
+    <path d="M1058 660 L1103 660 L1096 667 L1064 667 Z" fill="#eae2d3" />
+    <line x1="1048" y1="668" x2="1112" y2="668" stroke-width="0.65" opacity="0.65" />
+  </g>
+
+  <!-- 3. BARQUE & PÊCHEUR SUR L'EAU (à gauche/centre, bien dans la mer) -->
+  <g transform="translate(-140, -115)">
     <g class="barque-pecheur" stroke-width="0.95" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <!-- Coque de la barque en bois (avec relief intérieur) -->
       <path d="M722 722 Q760 731 798 722 L788 733 Q760 738 732 733 Z" fill="#eae2d3" />
       <path d="M726 722 Q760 727 794 722" stroke-width="0.7" />
-      <!-- Banc de nage en bois -->
       <line x1="746" y1="724" x2="746" y2="727" stroke-width="0.8" />
       <line x1="772" y1="724" x2="772" y2="727" stroke-width="0.8" />
-
-     <!-- Silhouette du pêcheur assis à l'arrière -->
+      <!-- Pêcheur -->
       <path d="M742 723 Q741 711 747 708 Q752 710 752 723" fill="#f8f4ec" stroke-width="0.9" />
       <path d="M747 712 L758 715" stroke-width="0.85" />
       <circle cx="747" cy="704" r="3" fill="#f8f4ec" stroke-width="0.85" />
       <path d="M739 702 Q747 704 756 701" stroke-width="0.95" />
       <path d="M743 702 Q747 696 751 701" fill="#e6decb" stroke-width="0.8" />
-
-    <!-- Canne à pêche souple & fil dans l'eau -->
+      <!-- Canne & fil -->
       <path d="M754 717 Q778 703 808 692" stroke-width="0.85" />
       <line x1="808" y1="692" x2="808" y2="736" stroke-width="0.5" opacity="0.75" />
       <circle cx="808" cy="736" r="1.4" fill="currentColor" stroke="none" />
       <ellipse cx="808" cy="737" rx="5" ry="1.5" stroke-width="0.55" opacity="0.6" />
-
-      <!-- Petites rides d'eau sous la coque -->
       <path d="M726 735 Q760 740 794 735" stroke-width="0.7" opacity="0.7" />
-      <path d="M738 740 Q760 743 782 740" stroke-width="0.55" opacity="0.45" stroke-dasharray="6 4" />
     </g>
   </g>
+
+  <!-- 4. LA PLAGE DE SABLE (part du pied de la falaise à gauche et descend vers le premier plan) -->
+  <path d="M415 595 Q540 618 760 626 Q1060 634 1440 615 L1440 800 L0 800 L0 595 Z" fill="#f4ede0" stroke="none" />
+  <!-- Ligne de rivage principale -->
+  <path d="M415 595 Q540 618 760 626 Q1060 634 1440 615" fill="none" stroke-width="0.95" />
+
+  <!-- 5. VAGUES ANIMÉES QUI LÈCHENT LE SABLE (notamment au pied de la falaise à gauche) -->
+  <g stroke-width="0.8" opacity="0.75">
+    <!-- Écume principale épousant la crique au pied de la falaise -->
+    <path class="vague-1" d="M405 601 Q535 625 760 633 Q1060 641 1440 622" />
+    <!-- Seconde ligne d'écume fine et discontinue sur le sable mouillé -->
+    <path class="vague-2" d="M390 610 Q525 634 755 642 Q1055 650 1440 631" stroke-dasharray="22 9 5 9" />
+    <!-- Petites vagues courbes dans l'anse rocheuse à gauche -->
+    <path class="vague-1" d="M365 598 Q415 612 465 618" stroke-width="0.7" />
+    <path class="vague-2" d="M345 606 Q395 620 445 626" stroke-width="0.65" stroke-dasharray="10 6" />
+  </g>
+
+  <!-- 6. DÉTAILS SUR LA PLAGE (BIEN POSÉS SUR LE SABLE SEC) -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Rides de sable et petits galets subtils -->
+    <path d="M510 658 Q560 662 610 659" stroke-width="0.55" opacity="0.45" />
+    <path d="M820 672 Q885 676 950 671" stroke-width="0.55" opacity="0.45" />
+    <path d="M640 695 Q710 699 780 694" stroke-width="0.5" opacity="0.4" stroke-dasharray="14 8" />
+    <ellipse cx="485" cy="638" rx="4" ry="2" fill="#e6decb" stroke-width="0.65" />
+    <ellipse cx="496" cy="641" rx="2.5" ry="1.3" fill="#e6decb" stroke-width="0.6" />
+    <ellipse cx="1180" cy="665" rx="5" ry="2.2" fill="#e6decb" stroke-width="0.65" />
+
+    <!-- Parasol & serviette posés bien au sec sur le sable (y=652) -->
+    <g transform="translate(680, 652)">
+      <!-- Ombre au sol + petite serviette -->
+      <ellipse cx="0" cy="0" rx="16" ry="3.5" fill="#e6decb" stroke="none" />
+      <path d="M-24 2 L-8 -1 L4 3 L-12 6 Z" fill="#fbf9f4" stroke-width="0.65" />
+      <!-- Mât & toile du parasol -->
+      <line x1="0" y1="0" x2="-2" y2="-28" stroke-width="0.9" />
+      <path d="M-20 -26 Q-2 -40 16 -26 Q4 -29 -2 -26 Q-10 -29 -20 -26 Z" fill="#f8f4ec" stroke-width="0.85" />
+      <path d="M-2 -33 L-8 -27 M-2 -33 L5 -27" stroke-width="0.55" opacity="0.6" />
+    </g>
+
+    <!-- Gros tronc de bois flotté sculpté sur la plage (à droite, y=662) -->
+    <g transform="translate(970, 662)">
+      <!-- Ombre portée sous le tronc -->
+      <path d="M-68 6 Q0 12 76 5 Q45 14 -35 13 Z" fill="#e4dccb" stroke="none" />
+      <!-- Corps principal du tronc noueux et courbé -->
+      <path d="M-65 2 Q-35 -6 5 -3 Q42 -1 72 -9 L76 -3 Q65 1 56 3 L66 8 L61 11 L44 5 Q10 8 -32 7 Q-52 8 -68 5 Z" fill="#eae2d3" stroke-width="0.95" />
+      <!-- Branche cassée vers le haut -->
+      <path d="M12 -3 L24 -16 L29 -14 L20 -2" fill="#eae2d3" stroke-width="0.85" />
+      <!-- Extrémité coupée (rondin) -->
+      <ellipse cx="-66" cy="3.5" rx="2.5" ry="2" fill="#f4ede0" stroke-width="0.75" />
+      <!-- Veines du bois et nœud (style gravure / anime japonais) -->
+      <path d="M-52 2 Q-20 -2 18 1 M-35 5 Q5 4 45 1" fill="none" stroke-width="0.6" opacity="0.65" />
+      <ellipse cx="-12" cy="2" rx="4" ry="1.5" fill="none" stroke-width="0.55" opacity="0.6" />
+      <!-- Touffes d'herbe dunaire poussant derrière le tronc -->
+      <path d="M-28 5 Q-32 -6 -37 -11 M-26 5 Q-25 -8 -23 -14 M-24 5 Q-19 -5 -15 -9" fill="none" stroke-width="0.7" opacity="0.75" />
+      <path d="M38 4 Q35 -5 31 -9 M40 4 Q42 -6 45 -10" fill="none" stroke-width="0.65" opacity="0.7" />
+    </g>
+
+  </g>
+
+  
+      
 </svg>
 
    
