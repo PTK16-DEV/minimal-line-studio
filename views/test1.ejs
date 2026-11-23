@@ -306,16 +306,19 @@ const DUREE_TRAVERSEE = 25;
 
 
 
-  <!-- 2. VOILIER AU LARGE (100% VISIBLE, BIEN AU-DESSUS DE LA PLAGE) -->
-  <g class="voilier" transform="translate(-40, -135)" stroke-width="0.9" fill="#f8f4ec">
-    <path d="M1080 658 L1080 602 Q1096 628 1099 657 Z" />
-    <path d="M1078 658 L1078 613 Q1065 635 1061 658 Z" fill="#f2ece0" />
-    <line x1="1079" y1="600" x2="1079" y2="661" stroke-width="0.95" />
-    <line x1="1079" y1="657" x2="1100" y2="657" stroke-width="0.85" />
-    <path d="M1079 600 L1088 602 L1079 604" fill="currentColor" stroke="none" />
-    <path d="M1056 660 L1105 660 L1098 667 L1062 667 Z" fill="#eae2d3" />
-    <line x1="1046" y1="669" x2="1114" y2="669" stroke-width="0.6" opacity="0.6" />
-  </g>
+      <!-- Voilier bien ancré dans l'eau sous l'horizon (y=568) -->
+    <g transform="translate(-40, -92)">
+      <g class="voilier" stroke-width="0.9" fill="#f8f4ec">
+        <path d="M1080 658 L1080 602 Q1096 628 1099 657 Z" />
+        <path d="M1078 658 L1078 613 Q1065 635 1061 658 Z" fill="#f2ece0" />
+        <line x1="1079" y1="600" x2="1079" y2="661" stroke-width="0.95" />
+        <line x1="1079" y1="657" x2="1100" y2="657" stroke-width="0.85" />
+        <path d="M1079 600 L1088 602 L1079 604" fill="currentColor" stroke="none" />
+        <path d="M1056 660 L1105 660 L1098 667 L1062 667 Z" fill="#eae2d3" />
+        <line x1="1046" y1="669" x2="1114" y2="669" stroke-width="0.6" opacity="0.6" />
+      </g>
+    </g>
+
 
   <!-- 3. BARQUE & PÊCHEUR SOLITAIRE DANS LA CRIQUE (à gauche/centre sur l'eau) -->
   <g transform="translate(-170, -145)">
