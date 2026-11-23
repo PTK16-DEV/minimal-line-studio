@@ -354,20 +354,20 @@ const DUREE_TRAVERSEE = 25;
     </g>
   </g>
 
-  <!-- 4. VÉGÉTATION MÉDITERRANÉENNE AU PIED DE LA FALAISE (x=370 à 475) -->
-  <g stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Buissons de maquis arrondis et denses au pied des rochers -->
-    <path d="M372 588 Q370 574 384 572 Q394 562 410 568 Q424 564 434 576 Q446 578 444 590 Z" fill="#e6decb" />
-    <path d="M386 582 Q398 575 412 581" fill="none" stroke-width="0.6" opacity="0.6" />
-    <path d="M428 592 Q432 581 446 580 Q458 574 470 584 Q480 586 476 595 Z" fill="#eae2d3" />
-    <!-- Agave méditerranéen sculpté au bord de la crique -->
-    <g transform="translate(492, 594)" stroke-width="0.8">
-      <path d="M0 0 Q-10 -12 -18 -14 Q-9 -7 -3 0" fill="#e6decb" />
-      <path d="M0 0 Q-5 -16 -7 -22 Q-1 -12 0 0" fill="#e6decb" />
-      <path d="M0 0 Q4 -17 7 -23 Q6 -11 1 0" fill="#e6decb" />
-      <path d="M0 0 Q11 -12 19 -13 Q10 -6 2 0" fill="#e6decb" />
+      <!-- Végétation au pied de la falaise (descendue de 12px pour bien poser sur le bord de l'eau) -->
+    <g transform="translate(0, 12)">
+      <g stroke-width="0.85">
+        <path d="M372 588 Q370 574 384 572 Q394 562 410 568 Q424 564 434 576 Q446 578 444 590 Z" fill="#e6decb" />
+        <path d="M428 592 Q432 581 446 580 Q458 574 470 584 Q480 586 476 595 Z" fill="#eae2d3" />
+        <g transform="translate(492, 594)" stroke-width="0.8">
+          <path d="M0 0 Q-10 -12 -18 -14 Q-9 -7 -3 0" fill="#e6decb" />
+          <path d="M0 0 Q-5 -16 -7 -22 Q-1 -12 0 0" fill="#e6decb" />
+          <path d="M0 0 Q4 -17 7 -23 Q6 -11 1 0" fill="#e6decb" />
+          <path d="M0 0 Q11 -12 19 -13 Q10 -6 2 0" fill="#e6decb" />
+        </g>
+      </g>
     </g>
-  </g>
+
 
   <!-- 5. LA PLAGE DE SABLE DOUX (s'étire élégamment du pied de la falaise vers toute la droite) -->
   <path d="M445 595 Q640 612 920 605 Q1180 598 1440 588 L1440 800 L0 800 L0 595 Z" fill="#f4ede0" stroke="none" />
